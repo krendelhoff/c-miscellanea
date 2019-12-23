@@ -10,7 +10,7 @@ int main(void)
         if (!(i % 38)) 
             putchar('\n');
     }
-    shellsortv2(arr, 1000);
+    shellsort(arr, 1000);
     putchar('\n');
     for(int i = 0; i < 999; i++) {
         printf("%d ", arr[i]);
@@ -28,16 +28,5 @@ void shellsort(int s[], int n)
                 int temp = s[j];
                 s[j] = s[j + gap];
                 s[j + gap] = temp;
-            }
-}
-void shellsortv2(int s[], int n)
-{
-    for(int gap = n / 2; gap > 0; gap /= 2)
-        for(int i = gap; i < n; i++)
-            if (s[i - gap] > s[i]) 
-            {
-                int temp = s[i - gap];
-                s[i - gap] = s[i];
-                s[i] = temp;
             }
 }
