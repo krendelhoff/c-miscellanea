@@ -1,5 +1,7 @@
 #ifndef LIBRARY_H
 #define LIBRARY_H
+#include <limits.h>
+#include <math.h>
 int length(char s[])
 {
     int i = 0;
@@ -18,8 +20,8 @@ void expand(char s[], char ss[])
             if (dec >= 0)
             {
                 if ((s[i - 1] >= '0' && s[i - 1] <= '9' && s[i + 1] >= '0' && s[i + 1] <= '9') ||
-                (s[i - 1] >= 'a' && s[i - 1] <= 'z' && s[i + 1] >= 'a' && s[i + 1] <= 'z') ||
-                (s[i - 1] >= 'A' && s[i - 1] <= 'Z' && s[i + 1] >= 'A' && s[i + 1] <= 'Z'))
+                    (s[i - 1] >= 'a' && s[i - 1] <= 'z' && s[i + 1] >= 'a' && s[i + 1] <= 'z') ||
+                    (s[i - 1] >= 'A' && s[i - 1] <= 'Z' && s[i + 1] >= 'A' && s[i + 1] <= 'Z'))
                 {
                     for (int jj = 0; jj < dec - 2; jj++)
                     {
@@ -33,7 +35,8 @@ void expand(char s[], char ss[])
                         ss[jj] = s[i - 1] + t;
                     k = k + dec - 2;
                     i++;
-                } else 
+                }
+                else
                     ss[k + i] = s[i];
             }
             else
@@ -175,11 +178,16 @@ int hTol(char s[])
     {
         for (i; i > 1; i--)
         {
-            if( s[i] >= 'A' && s[i] <= 'F') {
+            if (s[i] >= 'A' && s[i] <= 'F')
+            {
                 n = s[i] - 'A' + 10;
-            } else if (s[i] >= 'a' && s[i] <= 'f') {
+            }
+            else if (s[i] >= 'a' && s[i] <= 'f')
+            {
                 n = s[i] - 'a' + 10;
-            } else if (s[i] >= '0' && s[i] <= '9') {
+            }
+            else if (s[i] >= '0' && s[i] <= '9')
+            {
                 n = s[i] - '0';
             }
             sum = sum + n * pow(16, j);
@@ -190,14 +198,14 @@ int hTol(char s[])
 }
 void lower(char s[])
 {
-    for(int i = 0; s[i] != '\0'; i++)
-    s[i] = (s[i] >= 'A' && s[i] <= 'Z') ? s[i] - 'A' + 'a': s[i];
+    for (int i = 0; s[i] != '\0'; i++)
+        s[i] = (s[i] >= 'A' && s[i] <= 'Z') ? s[i] - 'A' + 'a' : s[i];
 }
 void shellsort(int s[], int n)
 {
-    for(int gap = n / 2; gap > 0; gap /= 2)
-        for(int i = gap; i < n; i++)
-            for(int j = i - gap; j >= 0 && s[j] > s[j + gap]; j -= gap)
+    for (int gap = n / 2; gap > 0; gap /= 2)
+        for (int i = gap; i < n; i++)
+            for (int j = i - gap; j >= 0 && s[j] > s[j + gap]; j -= gap)
             {
                 int temp = s[j];
                 s[j] = s[j + gap];
@@ -209,19 +217,12 @@ void copy(char to[], char from[])
     for (int i = 0; (to[i] = from[i]) != '\0'; ++i)
         ;
 }
-void reverse(char l[])
+void reverse(char s[])
 {
-    int i = 0, j = 0;
-    char c;
-    while (l[i] != '\n')
-        ++i;
-    for (i; i >= j; --i)
-    {
-        c = l[j];
-        l[j] = l[i];
-        l[i] = c;
-        ++j;
-    }
+    int len = length(s);
+    char temp;
+    for (int i = 0, j = len - 1; i < j; i++, j--)
+        temp = s[i], s[i] = s[j], s[j] = temp;
 }
 void squeeze(char s[], char ss[])
 {
@@ -234,14 +235,72 @@ void squeeze(char s[], char ss[])
         s[i] = '\0';
     }
 }
-void any(char s[], char ss[])
+int any(char s[], char ss[])
 {
-    for(int i = 0; ss[i] != '\0'; i++) {
-        for(int j = 0; s[j] != '\0'; j++) {
-            if (s[j] == ss[i]) 
+    for (int i = 0; ss[i] != '\0'; i++)
+    {
+        for (int j = 0; s[j] != '\0'; j++)
+        {
+            if (s[j] == ss[i])
                 return j;
         }
     }
     return -1;
+}
+void itoa(int n, char s[])
+{
+    int i, sign;
+    if (n > INT_MIN)
+    {
+        if ((sign = n) < 0)
+            n = -n;
+        i = 0;
+        do
+        {
+            s[i++] = n % 10 + '0';
+        } while ((n /= 10) > 0);
+        if (sign < 0)
+            s[i++] = '-';
+    }
+    else
+    {
+        long int nl = n;
+        nl = -nl;
+        do
+        {
+            s[i++] = n % 10 + '0';
+        } while ((n /= 10) > 0);
+        s[i++] = '-';
+    }
+    s[i] = '\0';
+    reverse(s);
+}
+void moveright(char s[], int n, int p)
+{
+    for (int jj = 0; jj < n; jj++)
+        for (int i = jj + length(s); i >= p + jj; i--)
+            s[i + 1] = s[i], s[i] = ' ';
+}
+void itob(char s[], int n, int b)
+{
+    int i, j = 0;
+    do
+    {
+        i = n % b;
+        if (i >= 10)
+            s[j] = i + 'A' - 10;
+        else
+            s[j] = (n % b) + '0';
+        j++;
+        n = n / b;
+    } while (n >= b);
+    if (n >= 10)
+        s[j++] = n + 'A' - 10;
+    else
+        s[j++] = n + '0';
+    s[j] = '\0';
+    reverse(s);
+    if (length(s) < 4) 
+    moveright(s, 4 - length(s), 0);
 }
 #endif
