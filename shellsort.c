@@ -1,6 +1,5 @@
 #include <stdio.h>
-void shellsort(int s[], int n);
-void shellsortv2(int s[], int n);
+#include "library.h"
 int main(void) 
 {
     int arr[1000];
@@ -18,15 +17,4 @@ int main(void)
             putchar('\n');
     }
     putchar('\n');
-}
-void shellsort(int s[], int n)
-{
-    for(int gap = n / 2; gap > 0; gap /= 2)
-        for(int i = gap; i < n; i++)
-            for(int j = i - gap; j >= 0 && s[j] > s[j + gap]; j -= gap)
-            {
-                int temp = s[j];
-                s[j] = s[j + gap];
-                s[j + gap] = temp;
-            }
 }
