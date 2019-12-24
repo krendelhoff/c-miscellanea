@@ -103,16 +103,16 @@ int setbits(int x, int p, int n, int y)
     x = x | y;
     return x;
 }
-int invert(int x, int p, int n)
-{
-    int bits = (~getbits(x, p, n) & ~(~0 << n)) << (p - n + 1);
-    x = x & ~(~(~0 << n) << (p - n + 1));
-    x = x | bits;
-    return x;
-}
 int getbits(int x, int p, int n)
 {
     return (x >> (p - n + 1)) & ~(~0 << n);
+}
+int invert(int x, int p, int n)
+{
+    int bits = (~(getbits(x, p, n)) & ~(~0 << n)) << (p - n + 1);
+    x = x & ~(~(~0 << n) << (p - n + 1));
+    x = x | bits;
+    return x;
 }
 int rightrot(int x, int n)
 {
@@ -170,13 +170,10 @@ void escapeback(char s[])
 int hTol(char s[])
 {
     char c;
-    int i = 0, j = 0, n, sum = 0;
-    while (s[i] != '\n')
-        ++i;
-    --i;
+    int j = 0, n, sum = 0;
     if (s[0] == '0' && (s[1] == 'x' || s[1] == 'X'))
     {
-        for (i; i > 1; i--)
+        for (int i = length(s) - 1; i > 1; i--)
         {
             if (s[i] >= 'A' && s[i] <= 'F')
             {

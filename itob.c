@@ -6,7 +6,10 @@ int main(void)
     for (int i = 2; i <= 36; i++)
     {
         itob(line, 40950, i);
-        printf("%d:%s\n", i, line);
+        if (i < 10)
+            printf(" %d:%s\n", i, line);
+        else
+            printf("%d:%s\n", i, line);
     }
     putchar('\n');
     return 0;
