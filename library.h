@@ -2,6 +2,7 @@
 #define LIBRARY_H
 #include <limits.h>
 #include <math.h>
+#define MAXLINE 1000
 int length(char s[])
 {
     int i = 0;
@@ -278,6 +279,11 @@ void moveright(char s[], int n, int p)
         for (int i = jj + length(s); i >= p + jj; i--)
             s[i + 1] = s[i], s[i] = ' ';
 }
+void moveright_v2(char s[], int n, int p)
+{
+    for (int i = length(s); i >= p; i--)
+        s[i + n] = s[i], s[i] = ' ';
+}
 void itob(char s[], int n, int b)
 {
     int i, j = 0;
@@ -297,7 +303,38 @@ void itob(char s[], int n, int b)
         s[j++] = n + '0';
     s[j] = '\0';
     reverse(s);
-    if (length(s) < 4) 
-    moveright(s, 4 - length(s), 0);
+    if (length(s) < 10)
+        moveright_v2(s, 10 - length(s), 0);
+}
+int strindexf(char s[], char ss[])
+{
+    int k, i, jj;
+    for (i = 0; i < length(s); i++)
+    {
+        for (jj = i, k = 0; ss[k] != '\0' && s[jj] == ss[k]; jj++, k++)
+            ;
+        if (k > 0 && ss[k] == '\0')
+            return i;
+    }
+    return -1;
+}
+int strindexl(char s[], char ss[])
+{
+    int k, i, jj, m = 0, state = 0, el;
+    char line[MAXLINE];
+    for (i = 0; i < length(s); i++)
+    {
+        for (jj = i, k = 0; ss[k] != '\0' && s[jj] == ss[k]; jj++, k++)
+            ;
+        if (k > 0 && ss[k] == '\0')
+        {
+            state = 1;
+            line[m++] = i;
+        }
+    }
+    line[m] = '\0';
+    if (state == 1)
+        return el = line[length(line) - 1];
+    return -1;
 }
 #endif
