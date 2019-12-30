@@ -2,6 +2,7 @@
 #define LIBRARY_H
 #include <limits.h>
 #include <math.h>
+#include <ctype.h>
 #define MAXLINE 1000
 int length(char s[])
 {
@@ -51,7 +52,7 @@ int getLine(char s[], int lim)
 {
     char c;
     int i;
-    for (i = 0; i < lim - 1 && (c = getchar()) != '<' && c != '\n'; ++i)
+    for (i = 0; i < lim - 1 && (c = getchar()) != EOF && c != '\n'; ++i)
     {
         s[i] = c;
     }
@@ -88,7 +89,7 @@ int binsearchv(int x, int s[], int n)
     while (low < high)
     {
         mid = (low + high) / 2;
-        if (x <= s[low])
+        if (x <= s[mid])
             high = mid;
         else
             low = mid + 1;
@@ -336,5 +337,70 @@ int strindexl(char s[], char ss[])
     if (state == 1)
         return el = line[length(line) - 1];
     return -1;
+}
+/*double atof(char s[])
+{
+    int i, sign, prik = 0, k;
+    double val, power;
+    for (i = 0; isspace(s[i]); i++)
+        ;
+    sign = (s[i] == '-') ? -1 : 1;
+    if (s[i] == '-' || s[i] == '+')
+        i++;
+    for (val = 0.0; isdigit(s[i]); i++)
+        val = 10.0 * val + (s[i] - '0');
+    if (s[i] == '.')
+        i++;
+    for (power = 1.0; isdigit(s[i]); i++)
+    {
+        val = 10.0 * val + (s[i] - '0');
+        power *= 10.0;
+    }
+    if ((s[i] == 'e' || s[i] == 'E') && (s[i + 1] == '-' || s[i + 1] == '+' || isdigit(s[i + 1])))
+        for (k = i + 2 - isdigit(s[i + 1]); isdigit(s[k]); k++)
+            prik = 10 * prik + (s[k] - '0');
+    if (s[i + 1] == '-')
+        return sign * val / power / pow(10, prik);
+    else
+        return sign * val / power * pow(10, prik);
+}*/
+int calc(char s[])
+{
+    int line[MAXLINE], i, k, num = 0, jj = -1, sign;
+    for (i = 0; i < length(s); i++)
+    {
+        if (isdigit(s[i]))
+        {
+            sign = (s[i - 1] == '-') ? -1 : 1;
+            for (k = i; isdigit(s[k]); k++)
+                num = 10 * num + (s[k] - '0');
+            i += (k - i);
+            line[++jj] = sign * num;
+            num = 0;
+        }
+        switch (s[i])
+        {
+        case '-':
+            if (isspace(s[i - 1]) && isspace(s[i + 1]))
+            {
+                jj--;
+                line[jj] -= line[jj + 1];
+            }
+            break;
+        case '+':
+            jj--;
+            line[jj] += line[jj + 1];
+            break;
+        case '/':
+            jj--;
+            line[jj] /= line[jj + 1];
+            break;
+        case '*':
+            jj--;
+            line[jj] *= line[jj + 1];
+            break;
+        }
+    }
+    return line[jj];
 }
 #endif
