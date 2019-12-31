@@ -7,7 +7,6 @@
 #define NUMBER '0'
 #define VARIABLE '2'
 #define MAXOP 100
-extern double var[26];
 int main(void)
 {
     char s[MAXOP], type;
