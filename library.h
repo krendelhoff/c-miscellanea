@@ -1,8 +1,8 @@
 #ifndef LIBRARY_H
 #define LIBRARY_H
 #include <limits.h>
-#include <math.h>
 #include <ctype.h>
+#include <math.h>
 #define MAXLINE 1000
 int length(char s[])
 {

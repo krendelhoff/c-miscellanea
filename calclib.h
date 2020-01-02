@@ -18,7 +18,7 @@ int buf_one = 0;
 double val[MAXVAL];
 void push(double f)
 {
-    if (sp < MAXVAL)
+    	if (sp < MAXVAL)
         val[sp++] = f;
     else
         printf("ошибка: стек полон, %g не помещается\n", f);
@@ -37,17 +37,17 @@ int getch(void)
 {
     return (bufp > 0) ? buf[--bufp] : getchar();
 }
-void ungetch(int с)
+void ungetch(int ch)
 {
     if (bufp >= BUFSIZE)
         printf("ungetch: слишком много символов\n");
     else
-        buf[bufp++] = с;
+        buf[bufp++] = ch; 
 }
-void ungetch_one(int c)
+/*void ungetch_one(int c)
 {
     buf_one = c;
-}
+}*/
 int getch_one(void)
 {
     int k = buf_one;
