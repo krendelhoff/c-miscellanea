@@ -9,4 +9,4 @@ int main(void)
     printf("%d\n", binsearch(20, arr, 21));
     printf("%d\n", binsearchv(20, arr, 21));
     return 0;
-} //alalalala
+}
