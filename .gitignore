@@ -18,7 +18,7 @@ git.sh
 .env.development.local
 .env.test.local
 .env.production.local
-
+.tern-project
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
