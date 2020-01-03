@@ -5,7 +5,8 @@
 /zsh-syntax-highlighting
 # testing
 /coverage
-
+launch.sh
+git.sh
 # production
 /build
 
