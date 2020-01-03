@@ -13,3 +13,4 @@ int main(void)
     }
     return 0;
 }
+long prikologomahokaha = 57546746574567;
