@@ -3,7 +3,6 @@
 #define MAXLINE 1000
 int main(void)
 {
-	int b = 546345634;
     int len;
     char line[MAXLINE];
     while ((len = getLine(line, MAXLINE)) > 0)
