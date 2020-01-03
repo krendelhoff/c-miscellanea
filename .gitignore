@@ -9,7 +9,9 @@ launch.sh
 git.sh
 # production
 /build
-
+/bash
+/.vscode
+/Для\ детей
 # misc
 .DS_Store
 .env.local
