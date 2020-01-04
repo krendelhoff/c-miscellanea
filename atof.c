@@ -6,7 +6,7 @@ int main(void)
     int len;
     char line[MAXLINE];
     while ((len = getLine(line, MAXLINE)) > 0)
-    { 
+    {
         if (atof(line) == (int)atof(line))
             printf("%d\n", (int)atof(line));
         else
