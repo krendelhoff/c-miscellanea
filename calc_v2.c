@@ -99,11 +99,6 @@ int main(void)
                 changetop();
                 state = 1;
             }
-            if (checkcom(s, "prints"))
-            {
-                printf("%g\n", var['s' - 'a']);
-                state = 1;
-            }
             if (1)
             {
                 if (checkcom(s, "a"))
