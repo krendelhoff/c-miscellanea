@@ -1,5 +1,2 @@
 #!/usr/bin/zsh
-ls -la
-pwd
-echo lol
-exit
+echo "Всё получится, братан. Дальше лучше."
