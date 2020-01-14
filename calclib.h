@@ -42,7 +42,7 @@ void ungetch(int ch)
     if (bufp >= BUFSIZE)
         printf("ungetch: слишком много символов\n");
     else
-        buf[bufp++] = ch; 
+        buf[bufp++] = ch;
 }
 /*void ungetch_one(int c)
 {
