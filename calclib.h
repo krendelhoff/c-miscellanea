@@ -183,4 +183,53 @@ int getop(char s[])
         ungetch(c);
     return NUMBER;
 }
+int getop_v2(char s[])
+{
+    int i, c;
+    char sign;
+    static char ungetchchar;
+    while ((s[0] = c = getch()) == ' ' || c == '\t')
+        ;
+    s[1] = '\0';
+    if (c == '$')
+    {
+        c = getch();
+        setVar(s, c);
+        return '$';
+    }
+    if (c >= 'a' && c <= 'z')
+    {
+        getcom(s);
+        return COMMAND;
+    }
+    i = 0;
+    if (c == '-')
+    {
+        if (isdigit(sign = getch()))
+        {
+            s[i++] = '-';
+            s[i] = sign;
+            c = sign;
+        }
+        else
+        {
+            ungetch(sign);
+            return c;
+        }
+    }
+    if (!isdigit(c) && c != '.' && c != '-')
+        return c;
+    if (isdigit(c))
+        while (isdigit(s[++i] = c = getch()))
+            ;
+    if (c == '.')
+        while (isdigit(s[++i] = c = getch()))
+            ;
+    i++;
+    s[i] = '\0';
+    if (c != EOF)
+        ungetchchar = c;
+        buf[bufp++] = ungetchchar;
+    return NUMBER;
+}
 #endif
