@@ -5,13 +5,10 @@
 /zsh-syntax-highlighting
 # testing
 /coverage
-launch.sh
-git.sh
 # production
 /build
 /bash
 /.vscode
-/Для\ детей
 # misc
 .DS_Store
 .env.local
@@ -22,8 +19,3 @@ git.sh
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-
-/new
-vim
-*.swp
-a.out
