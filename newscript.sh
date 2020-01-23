@@ -1,4 +1,4 @@
-#!/usr/bin/zsh
+#!/bin/zsh
 ls
 let "counter = 0"
 while [[ $counter -lt 10 ]]
