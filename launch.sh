@@ -1,5 +1,5 @@
-#!/usr/bin/zsh
-gcc -g -o executable $1 -lm
+#!/bin/zsh
+gcc -o executable $1
 if [[ -n $2 ]]
 then
 	./executable < $2
