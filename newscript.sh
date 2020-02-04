@@ -2,6 +2,6 @@
 let "counter = 0"
 while [[ $counter -lt 10 ]]
 do
-  echo sosi pisos
+  echo sosi meow
   let "counter = counter + 1"
 done
