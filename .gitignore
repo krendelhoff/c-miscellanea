@@ -21,3 +21,7 @@ yarn-debug.log*
 yarn-error.log*
 /42-C-Norme
 normfile.c
+header
+output
+a.out
+executable
