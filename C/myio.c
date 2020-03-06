@@ -1,8 +1,11 @@
 #include <unistd.h>
-#include "buffer_size.h"
+#include "algorithms.h"
+#include "mymath.h"
+#include "myio.h"
 
 char g_buf;
 char g_buffer[BUFFER_SIZE];
+int  g_i = -1;
 
 void ft_putchar(char c)
 {
@@ -15,12 +18,97 @@ char ft_getchar(void)
 	return (g_buf);
 }
 
-void getbuffer(void)
+char getbufchar(void)
 {
-	read(2, g_buffer, BUFFER_SIZE);
+	char c;
+
+	if (g_i < 0)
+		return (ft_getchar());
+	else
+		{
+			c = g_buffer[g_i];
+			g_i--;
+			return (c);
+		}
 }
 
-void printint(int n)
+void putinbuf(char c)
+{
+	g_i++;
+	g_buffer[g_i] = c;
+}
+
+int scan_line(char s[])
+{
+	int i;
+	char c;
+
+	i = 0;
+	while ((c = ft_getchar()) != '\n' && i < BUFFER_SIZE)
+	{
+		s[i] = c;
+		i++;
+	}
+	if (c == '\n')
+	{
+		s[i] = '\n';
+		i++;
+	}
+	s[i] = '\0';
+	return (i);
+}
+
+int scan_word(char s[])
+{
+	int i;
+	char c;
+
+	i = 0;
+	while ((c = ft_getchar()) != ' ' && c != '\n')
+	{
+		s[i] = c;
+		i++;
+	}
+	s[i] = '\0';
+	return (i);
+}
+
+int scan_int(void)
+{
+	char c;
+	int sign;
+	int i;
+	char s[100];
+
+	i = 0;
+	while (((c = getbufchar()) >= '0' && c <= '9') ||
+		   c == '-')
+		{
+			s[i] = c;
+			i++;
+		}
+	s[i] = '\0';
+	if (c == '\n')
+		putinbuf(c);
+    return (str_to_int(s));
+}
+
+int scan_arr(int arr[])
+{
+	int i;
+	char c;
+
+	i = 0;
+	while ((c = getbufchar()) != '\n')
+	{
+		putinbuf(c);
+		arr[i] = scan_int();
+		i++;
+	}
+	return (i);
+}
+
+void print_int(int n)
 {
 	int arr[10];
 	int i;
@@ -48,21 +136,22 @@ void printint(int n)
 	}
 }
 
-void printarr(int arr[])
+void print_arr(int arr[], int first, int last)
 {
 	int i = 0;
 	char c;
 
-	while (arr[i] != '@')
+	i = first;
+	while (i <= last)
 		{
-			printint(arr[i]);
+			print_int(arr[i]);
 			ft_putchar(' ');
 			i++;
 		}
 	ft_putchar('\n');
 }
 
-void printstr(char s[])
+void print_str(char s[])
 {
 	int i;
 	char c;

@@ -1,3 +1,6 @@
+#include "mymath.h"
+#include "myio.h"
+
 void swap(int arr[], int b, int f)
 {
 	int temp;
@@ -17,7 +20,7 @@ int arrlen(int arr[])
 	return (i);
 }
 
-int length(char s[])
+int strlength(char s[])
 {
 	int i;
 
@@ -25,6 +28,32 @@ int length(char s[])
 	while (s[i] != '\0')
 		i++;
 	return (i);
+}
+
+int str_to_int(char s[])
+{
+	int length;
+	int i;
+	int n;
+	int sign;
+
+	n = i = 0;
+	sign = 1;
+	if (s[i] == '-')
+	{
+		sign = -1;
+		i++;
+		length = strlength(s) - 2;
+	}
+	else
+		length = strlength(s) - 1;
+	while (i < strlength(s))
+		{
+			n += (s[i] - '0')*power(10, length);
+			i++;
+			length--;
+		}
+	return (sign*n);
 }
 
 int binary_search(int arr[], int hi, int lo, int n)
