@@ -1,20 +1,3 @@
-#include <stdio.h>
-#include <unistd.h>
-
-char g_buffer;
-
-int ft_putchar(char c)
-{
-	write(1, &c, 1);
-	return (0);
-}
-
-char ft_getchar(void)
-{
-	read(2, &g_buffer, 1);
-	return (g_buffer);
-}
-
 void swap(int arr[], int b, int f)
 {
 	int temp;
@@ -29,7 +12,7 @@ int arrlen(int arr[])
 	int i;
 
 	i = 0;
-	while (arr[i] != '\0')
+	while (arr[i] != '@')
 		i++;
 	return (i);
 }
@@ -60,7 +43,7 @@ int binary_search(int arr[], int hi, int lo, int n)
 		if (n < arr[mid])
 			hi = mid - 1;
 	}
-	return (EOF);
+	return (-1);
 }
 
 void selection_sort(int arr[])
@@ -83,18 +66,6 @@ void selection_sort(int arr[])
 		swap(arr, current, min_index);
 		current++;
 	}
-}
-
-void printarr(int arr[])
-{
-	int i = 0;
-
-	while (arr[i] != '\0')
-	{
-		printf("%d ", arr[i]);
-		i++;
-	}
-	putchar('\n');
 }
 
 void insertion_sort(int arr[])
