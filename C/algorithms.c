@@ -30,6 +30,21 @@ int strlength(char s[])
 	return (i);
 }
 
+int find(char s[], char c)
+{
+	int i;
+	int state;
+
+	i = state = 0;
+	if (s[i] == '-')
+		{
+			i++;
+			state = -1;
+		}
+	while (s[i] != c && i < strlength(s))
+		i++;
+	return (i + state);
+}
 int str_to_int(char s[])
 {
 	int length;
@@ -43,17 +58,43 @@ int str_to_int(char s[])
 	{
 		sign = -1;
 		i++;
-		length = strlength(s) - 2;
 	}
-	else
-		length = strlength(s) - 1;
+	length = find(s, '.');
 	while (i < strlength(s))
 		{
-			n += (s[i] - '0')*power(10, length);
+			n += (s[i] - '0')*power(10, --length);
 			i++;
-			length--;
 		}
 	return (sign*n);
+}
+
+double str_to_float(char s[])
+{
+	int length;
+	int i;
+	double n;
+	int sign;
+
+	n = i = 0;
+	sign = 1;
+	if (s[i] == '-')
+	{
+		sign = -1;
+		i++;
+	}
+	length = find(s, '.');
+	while (s[i] != '.' && i < strlength(s))
+	{
+		n = n + (s[i] - '0')*power(10, --length);
+		i++;
+	}
+	length = i++;
+	while (i < strlength(s))
+	{
+		n += (s[i] - '0')*power(10, length - i);
+		i++;
+	}
+	return (n*sign);
 }
 
 int binary_search(int arr[], int hi, int lo, int n)

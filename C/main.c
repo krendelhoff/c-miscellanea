@@ -7,9 +7,11 @@ int main(void)
 	int mas[100];
 	int length;
 
-	print_int(length = scan_arr(mas));
-	ft_putchar('\n');
-	print_arr(mas, 0, length - 1);
+	if (5 > 6)
+		print_int(5);
+	else
+		print_int(6);
+	print_float(89.0095, 4);
 	ft_putchar('\n');
 	return (0);
 }

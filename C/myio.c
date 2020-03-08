@@ -88,8 +88,7 @@ int scan_int(void)
 			i++;
 		}
 	s[i] = '\0';
-	if (c == '\n')
-		putinbuf(c);
+	putinbuf(c);
     return (str_to_int(s));
 }
 
@@ -101,7 +100,8 @@ int scan_arr(int arr[])
 	i = 0;
 	while ((c = getbufchar()) != '\n')
 	{
-		putinbuf(c);
+		if ((c >= '0' && c <= '9') || c == '-')
+			putinbuf(c);
 		arr[i] = scan_int();
 		i++;
 	}
@@ -110,9 +110,9 @@ int scan_arr(int arr[])
 
 void print_int(int n)
 {
-	int arr[10];
 	int i;
 	char c;
+	int arr[10];
 
 	i = 0;
 	if (n < 0)
@@ -130,15 +130,14 @@ void print_int(int n)
 	}
 	while (i >= 0)
 	{
-		c = arr[i] + '0';
-		ft_putchar(c);
+		ft_putchar(arr[i] + '0');
 		i--;
 	}
 }
 
 void print_arr(int arr[], int first, int last)
 {
-	int i = 0;
+	int i;
 	char c;
 
 	i = first;
@@ -162,4 +161,32 @@ void print_str(char s[])
 		ft_putchar(s[i]);
 		i++;
 	}
+}
+
+void print_float(double n, int signs)
+{
+	int i;
+	double k;
+	int state;
+
+	i = 0;
+	if (n < 0)
+	{
+		ft_putchar('-');
+		n = n*(-1);
+	}
+	print_int((int) n);
+	ft_putchar('.');
+	k = n - (int) n;
+	if (n != (int) n)
+		while (i < signs)
+		{
+			k *= 10;
+			print_int((int) k);
+			i++;
+			k -= (int) k;
+		}
+	else
+		while (i++ < signs)
+			print_int(0);
 }

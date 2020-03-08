@@ -1,14 +1,21 @@
-int power(int a, int k)
+double power(int a, int k)
 {
-	int n;
+	double n;
 	int i;
 
 	n = 1;
 	i = 0;
-	while (i < k)
-	{
-		n *= a;
-		i++;
-	}
+	if (k >= 0)
+		while (i < k)
+		{
+			n *= a;
+			i++;
+		}
+	else
+		while (i > k)
+		{
+			n /= a;
+			i--;
+		}
 	return (n);
 }
