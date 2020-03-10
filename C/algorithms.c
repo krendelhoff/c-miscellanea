@@ -155,3 +155,13 @@ void insertion_sort(int arr[])
 		current++;
 	}
 }
+
+int factorial(int n)
+{
+	int m;
+
+	m = 1;
+	while (n > 0)
+		m *= (n--);
+	return m;
+}
