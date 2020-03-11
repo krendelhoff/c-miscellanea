@@ -1,8 +1,6 @@
-#include "mymath.h"
+#include "mymath.h" /* my lib with simple algorithms */
 #include "myio.h"
 
-/* my lib with simple algorithms */
- * meow */
 void swap(int arr[], int b, int f)
 {
 	int temp;
