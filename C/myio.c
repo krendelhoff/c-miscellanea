@@ -1,4 +1,4 @@
-#include <unistd.h>
+#include <unistd.h> /* My own IO Library */
 #include "algorithms.h"
 #include "mymath.h"
 #include "myio.h"
@@ -7,7 +7,6 @@ char g_buf;
 char g_buffer[BUFFER_SIZE];
 int  g_i = -1;
 
-/* My own IO Library */
 
 void ft_putchar(char c)
 {
