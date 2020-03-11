@@ -1,6 +1,7 @@
 #include "mymath.h"
 #include "myio.h"
 
+/* my lib with simple algorithms */
 void swap(int arr[], int b, int f)
 {
 	int temp;
