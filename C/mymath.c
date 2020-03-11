@@ -1,3 +1,5 @@
+/* my math lib */
+
 double power(int a, int k)
 {
 	double n;
