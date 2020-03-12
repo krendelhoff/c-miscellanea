@@ -1,6 +1,6 @@
-#include "algorithms.h"
-#include "myio.h"
-#include "mymath.h"
+#include "lib/algorithms.h"
+#include "lib/myio.h"
+#include "lib/mymath.h"
 
 int main(void)
 {
