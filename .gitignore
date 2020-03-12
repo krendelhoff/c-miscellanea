@@ -25,4 +25,3 @@ header
 output
 a.out
 executable
-/C/main.c
