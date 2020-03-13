@@ -10,4 +10,5 @@ int str_to_int(char s[]);
 double str_to_float(char s[]);
 int find(char s[], char c);
 int factorial(int n);
+int is_prime(int n);
 #endif
