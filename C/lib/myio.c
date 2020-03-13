@@ -7,7 +7,10 @@ char g_buf;
 char g_buffer[BUFFER_SIZE];
 int  g_i = -1;
 
+<<<<<<< .merge_file_xJAP6e
 
+=======
+>>>>>>> .merge_file_1nrvtc
 void ft_putchar(char c)
 {
 	write(1, &c, 1);
