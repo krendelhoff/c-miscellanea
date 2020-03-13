@@ -165,3 +165,17 @@ int factorial(int n)
 		m *= (n--);
 	return m;
 }
+
+int is_prime(int n)
+{
+	int divisor;
+
+	divisor = 2;
+	while (power(divisor, 2) < n)
+	{
+		if (n % divisor == 0)
+			return (0);
+		divisor++;
+	}
+	return (1);
+}
