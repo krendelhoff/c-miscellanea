@@ -4,7 +4,6 @@
 
 int main(void)
 {
-	int m;
 	int mas[100];
 	int length;
 
