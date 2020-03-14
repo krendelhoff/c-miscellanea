@@ -171,11 +171,67 @@ int is_prime(int n)
 	int divisor;
 
 	divisor = 2;
-	while (power(divisor, 2) < n)
+	while (power(divisor, 2) <= n)
 	{
 		if (n % divisor == 0)
 			return (0);
 		divisor++;
 	}
 	return (1);
+}
+
+void print_prime_numbers(int n)
+{
+	int i;
+
+	i = 2;
+	while (n >= 0)
+	{
+		if (is_prime(i))
+		{
+			print_int(i);
+			ft_putchar(' ');
+			n--;
+		}
+		i++;
+	}
+}
+
+void print_number_factors(int n)
+{
+	int divisor;
+	int original;
+
+	divisor = 2;
+	original = n;
+	while (n != 1)
+	{
+		while (n % divisor == 0)
+		{
+			n /= divisor;
+			print_int(divisor);
+			print_str(" ");
+		}
+		divisor++;
+	}
+}
+
+void sieve(int arr[], int n)
+{
+	int i;
+	int k;
+
+	i = 2;
+	while (i*i < n)
+	{
+		k = i*i;
+		if (arr[i] == 0)
+			while (k < n)
+			{
+				arr[k] = 1;
+				k += i;
+			}
+		i++;
+	}
+	print_arr(arr, 0, n);
 }

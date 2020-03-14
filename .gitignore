@@ -25,3 +25,5 @@ header
 output
 a.out
 executable
+.#*
+/lib/.#*

@@ -11,4 +11,7 @@ double str_to_float(char s[]);
 int find(char s[], char c);
 int factorial(int n);
 int is_prime(int n);
+void print_prime_numbers(int n);
+void print_number_factors(int n);
+void sieve(int arr[], int n);
 #endif

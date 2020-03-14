@@ -4,14 +4,27 @@
 
 int main(void)
 {
-	int mas[100];
-	int length;
+	int n;
+	int mas[100] = {0};
 
-	if (5 > 6)
-		print_int(5);
+	print_str("Print an integer: ");
+	if (is_prime(n = scan_int()))
+	{
+		print_str("The number is prime\n");
+		print_str("The first ");
+		print_int(n);
+		print_str(" prime numbers:\n") ;
+		print_prime_numbers(n);
+		ft_putchar('\n');
+		sieve(mas, n);
+	}
 	else
-		print_int(6);
-	print_float(89.0095, 4);
-	ft_putchar('\n');
+	{
+		print_str("The number is not prime\n");
+		print_str("The number's factors: ");
+		print_number_factors(n);
+		ft_putchar('\n');
+	}
+		ft_putchar('\n');
 	return (0);
 }
