@@ -81,10 +81,6 @@ int scan_int(void)
 	char s[100];
 
 	i = 0;
-	/* while (((c = getbufchar()) < '0' && c > '9') ||
-	** 	   c != '-');
-	** putinbuf(c);
-	*/
 	while (((c = getbufchar()) >= '0' && c <= '9') ||
 		   c == '-')
 		{

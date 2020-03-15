@@ -8,19 +8,7 @@ int main(void)
 	int arr[100];
 	char s[100] = "123456789";
 
-	print_str(s);
-	ft_putchar('\n');
-	cyclic_shift_right_str(s);
-	print_str(s);
-	ft_putchar('\n');
-	cyclic_shift_right_str(s);
-	print_str(s);
-	ft_putchar('\n');
-	cyclic_shift_right_str(s);
-	print_str(s);
-	ft_putchar('\n');
-	cyclic_shift_right_str(s);
-	print_str(s);
+	print_arr(arr, 0, scan_arr(arr) - 1);
 	ft_putchar('\n');
 	return (0);
 }
