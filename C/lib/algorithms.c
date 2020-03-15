@@ -1,7 +1,7 @@
 #include "mymath.h" /* my lib with simple algorithms */
 #include "myio.h"
 
-void swap(int arr[], int b, int f)
+void swap_int(int arr[], int b, int f)
 {
 	int temp;
 
@@ -133,7 +133,7 @@ void selection_sort(int arr[])
 				min_index = i;
 			i++;
 		}
-		swap(arr, current, min_index);
+		swap_int(arr, current, min_index);
 		current++;
 	}
 }
@@ -149,7 +149,7 @@ void insertion_sort(int arr[])
 		i = current;
 		while (i > 0 && arr[i - 1] > arr[i])
 		{
-			swap(arr, i - 1, i);
+			swap_int(arr, i - 1, i);
 			i--;
 		}
 		current++;
@@ -234,4 +234,77 @@ void sieve(int arr[], int n)
 		i++;
 	}
 	print_arr(arr, 0, n);
+}
+
+void initialize_by_zero(int arr[], int length)
+{
+	int i;
+
+	i = 0;
+	while (i < length)
+		arr[i++] = 0;
+}
+
+void reverse_arr(int arr[], int first, int last)
+{
+	while (first <= (first + last)/2)
+	{
+		swap_int(arr, first, last);
+		first++;
+		last--;
+	}
+}
+
+void swap_char(char s[], int b, int f)
+{
+	int temp;
+
+	temp = s[b];
+	s[b] = s[f];
+	s[f] = temp;
+}
+
+void reverse_str(char s[])
+{
+	int first;
+	int last;
+
+	first = 0;
+	last = strlength(s) - 1;
+	while (last > first)
+	{
+		swap_char(s, first, last);
+		first++;
+		last--;
+	}
+}
+
+void cyclic_shift_left_str(char s[])
+{
+	int temp;
+	int i;
+
+	temp = s[0];
+	i = 0;
+	while (i < strlength(s) - 1)
+	{
+		s[i] = s[i + 1];
+		i++;
+	}
+	s[i] = temp;
+}
+
+void cyclic_shift_right_str(char s[])
+{
+	int temp;
+	int i;
+
+	temp = s[strlength(s) - 1];
+	i = strlength(s) - 1;
+	while (i > 0)
+	{
+		s[i] = s[i - 1];
+		i--;
+	}
+	s[0] = temp;
 }

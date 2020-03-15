@@ -5,26 +5,22 @@
 int main(void)
 {
 	int n;
-	int mas[100] = {0};
+	int arr[100];
+	char s[100] = "123456789";
 
-	print_str("Print an integer: ");
-	if (is_prime(n = scan_int()))
-	{
-		print_str("The number is prime\n");
-		print_str("The first ");
-		print_int(n);
-		print_str(" prime numbers:\n") ;
-		print_prime_numbers(n);
-		ft_putchar('\n');
-		sieve(mas, n);
-	}
-	else
-	{
-		print_str("The number is not prime\n");
-		print_str("The number's factors: ");
-		print_number_factors(n);
-		ft_putchar('\n');
-	}
-		ft_putchar('\n');
+	print_str(s);
+	ft_putchar('\n');
+	cyclic_shift_right_str(s);
+	print_str(s);
+	ft_putchar('\n');
+	cyclic_shift_right_str(s);
+	print_str(s);
+	ft_putchar('\n');
+	cyclic_shift_right_str(s);
+	print_str(s);
+	ft_putchar('\n');
+	cyclic_shift_right_str(s);
+	print_str(s);
+	ft_putchar('\n');
 	return (0);
 }
