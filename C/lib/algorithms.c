@@ -10,16 +10,6 @@ void swap_int(int arr[], int b, int f)
 	arr[f] = temp;
 }
 
-int arrlen(int arr[])
-{
-	int i;
-
-	i = 0;
-	while (arr[i] != '@')
-		i++;
-	return (i);
-}
-
 int strlength(char s[])
 {
 	int i;
@@ -116,18 +106,18 @@ int binary_search(int arr[], int hi, int lo, int n)
 	return (-1);
 }
 
-void selection_sort(int arr[])
+void selection_sort(int arr[], int first, int last)
 {
 	int current;
 	int min_index;
 	int i;
 
-	current = 0;
-	while (current <= (arrlen(arr) - 2))
+	current = first;
+	while (current <= (last - 1))
 	{
 		min_index = current;
 		i = current + 1;
-		while (i <= arrlen(arr) - 1)
+		while (i <= last)
 		{
 			if (arr[i] < arr[min_index])
 				min_index = i;
@@ -138,13 +128,13 @@ void selection_sort(int arr[])
 	}
 }
 
-void insertion_sort(int arr[])
+void insertion_sort(int arr[], int first, int last)
 {
 	int current;
 	int i;
 
-	current = 1;
-	while (current < arrlen(arr))
+	current = first + 1;
+	while (current <= last)
 	{
 		i = current;
 		while (i > 0 && arr[i - 1] > arr[i])
@@ -307,4 +297,9 @@ void cyclic_shift_right_str(char s[])
 		i--;
 	}
 	s[0] = temp;
+}
+
+void meow(int *n)
+{
+	*n = *n*2;
 }
