@@ -20,4 +20,5 @@ void reverse_str(char s[]);
 void swap_char(char s[], int b, int f);
 void cyclic_shift_left_str(char s[]);
 void cyclic_shift_right_str(char s[]);
+int fibonacci(int n);
 #endif

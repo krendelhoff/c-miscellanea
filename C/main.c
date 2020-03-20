@@ -1,24 +1,26 @@
 #include "lib/algorithms.h"
 #include "lib/myio.h"
 #include "lib/mymath.h"
-#define size 100
+# define N 45
+
 
 int main(void)
 {
 	int n;
 	int i;
-	int arr[size];
 
-	i = 0;
-	while (i < size)
+	i = N;
+	print_str("Enter the number of the fibonacci term: ");
+	n = scan_int();
+	while (i > 0)
 	{
-		arr[i] = size - 1 - i;
-		i++;
+		print_str("The ");
+		print_int(N - i + 1);
+		print_str(" number of fibonacci is ");
+		print_int(fibonacci(N - i + 1));
+		ft_putchar('\n');
+		i--;
 	}
-	print_arr(arr, 0, size - 1);
-	ft_putchar('\n');
-	insertion_sort(arr, 0, size - 1);
-	print_arr(arr, 0, size - 1);
 	ft_putchar('\n');
 	return (0);
 }

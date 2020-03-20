@@ -1,6 +1,8 @@
 #include "mymath.h" /* my lib with simple algorithms */
 #include "myio.h"
 
+int cache[100] = {0};
+
 void swap_int(int arr[], int b, int f)
 {
 	int temp;
@@ -299,7 +301,11 @@ void cyclic_shift_right_str(char s[])
 	s[0] = temp;
 }
 
-void meow(int *n)
+int fibonacci(int n)
 {
-	*n = *n*2;
+	if (n <= 1)
+		return (n);
+	if (cache[n] != 0)
+		return (cache[n]);
+	return (cache[n] = fibonacci(n - 1) + fibonacci(n - 2));
 }
