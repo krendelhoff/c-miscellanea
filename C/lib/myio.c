@@ -44,7 +44,8 @@ int scan_line(char s[])
 	char c;
 
 	i = 0;
-	while ((c = ft_getchar()) != '\n' && i < BUFFER_SIZE)
+	while ((c = ft_getchar()) != '\n' &&
+		   i < BUFFER_SIZE)
 	{
 		s[i] = c;
 		i++;
