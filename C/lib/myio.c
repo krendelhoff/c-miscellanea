@@ -1,7 +1,4 @@
-#include <unistd.h> /* My own IO Library */
-#include "algorithms.h"
-#include "mymath.h"
-#include "myio.h"
+#include "mylib.h"
 
 char g_buf;
 char g_buffer[BUFFER_SIZE];

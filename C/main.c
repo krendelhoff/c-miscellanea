@@ -1,6 +1,4 @@
-#include "algorithms.h"
-#include "myio.h"
-#include "mymath.h"
+#include "mylib.h"
 # define N 45
 
 

@@ -1,5 +1,4 @@
-#include "mymath.h" /* my lib with simple algorithms */
-#include "myio.h"
+#include "mylib.h" /* my lib with simple algorithms */
 
 int cache[100] = {0};
 
