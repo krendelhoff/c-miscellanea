@@ -1,6 +1,6 @@
-#include "lib/algorithms.h"
-#include "lib/myio.h"
-#include "lib/mymath.h"
+#include "algorithms.h"
+#include "myio.h"
+#include "mymath.h"
 # define N 45
 
 
@@ -12,6 +12,8 @@ int main(void)
 	i = N;
 	print_str("Enter the number of the fibonacci term: ");
 	n = scan_int();
+	print_int(n);
+	ft_putchar('\n');
 	while (i > 0)
 	{
 		print_str("The ");
