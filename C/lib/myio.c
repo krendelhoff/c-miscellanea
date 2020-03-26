@@ -35,14 +35,14 @@ void putinbuf(char c)
 	g_buffer[g_i] = c;
 }
 
-int scan_line(char s[])
+int scan_line(char s[], int lim)
 {
 	int i;
 	char c;
 
 	i = 0;
-	while ((c = ft_getchar()) != '\n' &&
-		   i < BUFFER_SIZE)
+	while ((c = getbufchar()) != '\n' &&
+		   i < lim - 1)
 	{
 		s[i] = c;
 		i++;
@@ -52,6 +52,8 @@ int scan_line(char s[])
 		s[i] = '\n';
 		i++;
 	}
+	else
+		putinbuf(c);
 	s[i] = '\0';
 	return (i);
 }

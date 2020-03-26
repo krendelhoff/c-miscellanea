@@ -1,7 +1,7 @@
 #ifndef MYLIB_H
 
 # define MYLIB_H
-# define BUFFER_SIZE 100
+# define BUFFER_SIZE 1000
 # define TRUE 1
 # define FALSE 0
 # define N 45

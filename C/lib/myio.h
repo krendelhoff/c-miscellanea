@@ -6,7 +6,7 @@ char ft_getchar(void);
 void print_int(int n);
 void print_str(char s[]);
 int  scan_word(char s[]);
-int  scan_line(char s[]);
+int  scan_line(char s[], int lim);
 char getbufchar(void);
 void putinbuf(char c);
 int  scan_int(void);

@@ -30,4 +30,5 @@ main.o: main.c
 
 launch: main.o algorithms.o myio.o mymath.o
 	gcc -Wall -Werror -Wextra main.o algorithms.o myio.o mymath.o -o executable
+	make clean
 	./executable
