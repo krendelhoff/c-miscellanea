@@ -1,26 +1,15 @@
 #include "mylib.h"
-# define N 45
-
 
 int main(void)
 {
 	int n;
 	int i;
+	int m;
 
-	i = N;
-	print_str("Enter the number of the fibonacci term: ");
-	n = scan_int();
-	print_int(n);
-	ft_putchar('\n');
-	while (i > 0)
-	{
-		print_str("The ");
-		print_int(N - i + 1);
-		print_str(" number of fibonacci is ");
-		print_int(fibonacci(N - i + 1));
-		ft_putchar('\n');
-		i--;
-	}
+	i = 25;
+	n = 22;
+	m = n ^ i;
+	print_int(m);
 	ft_putchar('\n');
 	return (0);
 }
