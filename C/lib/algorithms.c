@@ -21,6 +21,17 @@ int strlength(char s[])
 	return (i);
 }
 
+void remove_term(char s[], int index)
+{
+	int i;
+
+	while(index < strlength(s))
+	{
+		s[index] = s[index + 1];
+		index++;
+	}
+}
+
 int find(char s[], char c)
 {
 	int i;
@@ -307,4 +318,32 @@ int fibonacci(int n)
 	if (cache[n] != 0)
 		return (cache[n]);
 	return (cache[n] = fibonacci(n - 1) + fibonacci(n - 2));
+}
+
+void   remove_trailing_spaces(char s[])
+{
+	int i;
+	int k;
+
+	k = i = 0;
+	while (s[i] == ' ')
+        {
+            remove_term(s, i);
+        }
+        while (i < strlength(s))
+        {
+            if (s[i] == ' ')
+                k++;
+            else
+                k = 0;
+            if (k > 1)
+            {
+                remove_term(s, i);
+                k--;
+                print_str(s);
+                ft_putchar('\n');
+                continue;
+            }
+            i++;
+        }
 }
