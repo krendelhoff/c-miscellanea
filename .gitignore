@@ -28,3 +28,5 @@ executable
 .#*
 /lib/.#*
 /C/21school_stuff
+binary
+mylib.a

@@ -341,7 +341,6 @@ void   remove_trailing_spaces(char s[])
                 remove_term(s, i);
                 k--;
                 print_str(s);
-                ft_putchar('\n');
                 continue;
             }
             i++;

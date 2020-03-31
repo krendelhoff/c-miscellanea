@@ -1,12 +1,10 @@
 #include "mylib.h"
 
-int main(void)
+int main(int argc, char **argv)
 {
-	int n;
-	char s[]="       I       love            you    ti     suka! !!";
+    int n;
 
-	remove_trailing_spaces(s);
-	print_str(s);
-	ft_putchar('\n');
-	return (0);
+    n = 5;
+    ft_putchar('\n');
+    return (0);
 }
