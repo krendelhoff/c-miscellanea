@@ -1,5 +1,4 @@
-#include "mylib.h" /* my lib with simple algorithms */
-
+#include "mylib.h" /* my lib with simple algorithms */ 
 int cache[100] = {0};
 
 void swap_int(int arr[], int b, int f)
@@ -101,61 +100,62 @@ double str_to_float(char s[])
 
 int binary_search(int arr[], int hi, int lo, int n)
 {
-	int mid;
+    int mid;
 
-	while (lo <= hi)
-	{
-		if ((lo + hi) % 2 == 0)
-			mid = (lo + hi)/2;
-		else mid = (lo + hi)/2 + 1;
-		if (n == arr[mid])
-			return (mid);
-		if (n > arr[mid])
-			lo = mid + 1;
-		if (n < arr[mid])
-			hi = mid - 1;
-	}
-	return (-1);
+    while (lo <= hi)
+    {
+        if ((lo + hi) % 2 == 0)
+            mid = (lo + hi)/2;
+        else
+            mid = (lo + hi)/2 + 1;
+        if (n == arr[mid])
+           return (mid);
+        if (n > arr[mid])
+           lo = mid + 1;
+        if (n < arr[mid])
+           hi = mid - 1;
+    }
+    return (-1);
 }
 
 void selection_sort(int arr[], int first, int last)
 {
-	int current;
-	int min_index;
-	int i;
+    int current;
+    int min_index;
+    int i;
 
-	current = first;
-	while (current <= (last - 1))
-	{
-		min_index = current;
-		i = current + 1;
-		while (i <= last)
-		{
-			if (arr[i] < arr[min_index])
-				min_index = i;
-			i++;
-		}
-		swap_int(arr, current, min_index);
-		current++;
-	}
+    current = first;
+    while (current <= (last - 1))
+    {
+        min_index = current;
+        i = current + 1;
+        while (i <= last)
+        {
+            if (arr[i] < arr[min_index])
+                min_index = i;
+            i++;
+        }
+        swap_int(arr, current, min_index);
+        current++;
+    }
 }
 
 void insertion_sort(int arr[], int first, int last)
 {
-	int current;
-	int i;
+    int current;
+    int i;
 
-	current = first + 1;
-	while (current <= last)
-	{
-		i = current;
-		while (i > 0 && arr[i - 1] > arr[i])
-		{
-			swap_int(arr, i - 1, i);
-			i--;
-		}
-		current++;
-	}
+    current = first + 1;
+    while (current <= last)
+    {
+        i = current;
+        while (i > 0 && arr[i - 1] > arr[i])
+        {
+            swap_int(arr, i - 1, i);
+            i--;
+        }
+        current++;
+    }
 }
 
 int factorial(int n)
@@ -345,4 +345,156 @@ void   remove_trailing_spaces(char s[])
             }
             i++;
         }
+}
+
+int euclidus(int a, int b)
+{
+    while (a != b)
+    {
+        if (a > b)
+            a -= b;
+        else
+            b -= a;
+    }
+    return (a);
+}
+
+void swap(int *a, int *b)
+{
+    int tmp;
+
+    tmp = *a;
+    *a = *b;
+    *b = tmp;
+}
+int fast_euclidus(int a, int b)
+{
+    int tmp;
+
+    if (b > a)
+        swap(&a, &b);
+    while (b != 0)
+    {
+        tmp = b;
+        b = a % b;
+        a = tmp;
+    }
+    return (a);
+}
+
+int gcd_expanded(int a, int b, int *x, int *y)
+{
+    int x1;
+    int y1;
+    int d;
+
+    if (a == 0)
+    {
+        *x = 0;
+        *y = 1;
+        return (b);
+    }
+    d = gcd_expanded(b%a, a, &x1, &y1);
+    *x = y1 - (b / a)*x1;
+    *y = x1;
+    return (d);
+}
+
+void merge(int arr[], int left, int middle, int right)
+{
+    int i;
+    int j;
+    int k;
+    int L[middle - left + 1];
+    int R[right - middle];
+
+    int n1;
+    int n2;
+
+    n1 = middle - left + 1;
+    n2 = right - middle;
+    i = 0;
+    while (i < n1)
+    {
+        L[i] = arr[left + i];
+        i++;
+    }
+    i = 0;
+    while (i < n2)
+    {
+        R[i] = arr[middle + 1 + i];
+        i++;
+    }
+    i = j = 0;
+    k = left;
+    while (i < n1 && j < n2)
+    {
+        if (L[i] <= R[j])
+        {
+            arr[k] = L[i];
+            i++;
+        }
+        else
+        {
+            arr[k] = R[j];
+            j++;
+        }
+        k++;
+    }
+    while (i < n1)
+    {
+        arr[k] = L[i];
+        i++;
+        k++;
+    }
+    while (j < n2)
+    {
+        arr[k] = R[j];
+        j++;
+        k++;
+    }
+}
+
+void merge_sort(int arr[], int left, int right)
+{
+    int middle;
+
+    if (left < right)
+    {
+        middle = (left + right) / 2;
+        merge_sort(arr, left, middle);
+        merge_sort(arr, middle + 1, right);
+        merge(arr, left, middle, right);
+    }
+}
+
+int partition(int *arr, int left, int right)
+{
+    int pivot;
+    int i;
+    int j;
+
+    i = left - 1;
+    pivot = arr[right];
+    j = left;
+    while (j <= right - 1)
+    {
+        if (arr[j] < pivot)
+            i++;
+        j++;
+    }
+    swap(&arr[i + 1], &arr[right]);
+    return (i + 1);
+}
+
+void quick_sort(int *arr, int left, int right)
+{
+    int pivot;
+
+    if (left < right)
+    {
+        pivot = partition(arr, left, right);
+        quick_sort(arr, left, pivot - 1);
+        quick_sort(arr, pivot + 1, right);
+    }
 }

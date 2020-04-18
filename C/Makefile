@@ -2,13 +2,17 @@
 
 FLAGS = -Werror -Wall -Wextra
 
-all: launch clean
+NAME = binary
+
+SRC = lib/mymath.c lib/myio.c lib/algorithms.c
+
+all: $(NAME)
 
 clean:
-		rm -rf *.o *.a
+		rm -rf *.o
 
 fclean: clean
-		rm -rf binary
+		rm -rf binary mylib.a
 
 re: fclean all
 
@@ -18,17 +22,10 @@ install:
 uninstall:
 		rm -rf /usr/local/bin/executable
 
-algorithms.o: lib/algorithms.c
-				gcc -c -o algorithms.o lib/algorithms.c -I lib
-
-myio.o: lib/myio.c
-		gcc -c -o myio.o lib/myio.c -I lib
-
-mymath.o: lib/mymath.c
-		gcc -c -o mymath.o lib/mymath.c -I lib
-
-lib.o: mymath.o algorithms.o myio.o
+mylib.a: $(SRC)
+		gcc -g -c $(SRC) -I lib
 		ar rc mylib.a *.o
+		rm -rf *.o
 
-launch: main.c lib.o
-		gcc $(FLAGS) -o binary main.c mylib.a -I lib
+$(NAME): main.c mylib.a
+		gcc $(FLAGS) -o $(NAME) main.c mylib.a -I lib

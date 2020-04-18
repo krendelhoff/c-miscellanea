@@ -23,4 +23,13 @@ void   cyclic_shift_right_str(char s[]);
 int    fibonacci(int n);
 void   remove_trailing_spaces(char s[]);
 void   remove_term(char s[], int index);
+int    euclidus(int a, int b);
+void   swap(int *a, int *b);
+int    fast_euclidus(int a, int b);
+int    gcd_expanded(int a, int b, int *x, int *y);
+int    dtb(int n);
+void   merge(int *arr, int left, int middle, int right);
+void   merge_sort(int *arr, int left, int right);
+int    partition(int *arr, int left, int right);
+void   quick_sort(int *arr, int left, int right);
 #endif
