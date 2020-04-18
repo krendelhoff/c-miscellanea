@@ -32,4 +32,11 @@ void   merge(int *arr, int left, int middle, int right);
 void   merge_sort(int *arr, int left, int right);
 int    partition(int *arr, int left, int right);
 void   quick_sort(int *arr, int left, int right);
+int    ft_atoi(char s[]);
+int    ft_htoi(char s[]);
+void   ft_squeeze(char s[], int c);
+void   ft_extended_squeeze(char s[], char t[]);
+int    find_char(char s[], char c);
+void   ft_strcan(char s[], char t[]);
+
 #endif

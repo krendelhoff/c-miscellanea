@@ -1,4 +1,4 @@
-#include "mylib.h" /* my lib with simple algorithms */ 
+#include "mylib.h" /* my lib with simple algorithms */
 int cache[100] = {0};
 
 void swap_int(int arr[], int b, int f)
@@ -496,5 +496,144 @@ void quick_sort(int *arr, int left, int right)
         pivot = partition(arr, left, right);
         quick_sort(arr, left, pivot - 1);
         quick_sort(arr, pivot + 1, right);
+    }
+}
+
+int ft_atoi(char s[])
+{
+    int i;
+    int n;
+
+    i = 0;
+    n = 0;
+    while (s[i] >= '0' && s[i] <= '9')
+    {
+        ft_putchar(s[i]);
+        ft_putchar(' ');
+        n = 10 * n + (s[i] - '0');
+        print_int(n);
+        ft_putchar('\n');
+        i++;
+    }
+    return (n);
+}
+
+int hex(char c)
+{
+    if (c >= '0' && c <= '9')
+    {
+        return (c - '0');
+    }
+    else if (c == 'A' || c == 'a')
+    {
+        return (10);
+    }
+    else if (c == 'B' || c == 'b')
+    {
+        return (11);
+    }
+    else if (c == 'C' || c == 'c')
+    {
+        return (12);
+    }
+    else if (c == 'D' || c == 'd')
+    {
+        return (13);
+    }
+    else if (c == 'E' || c == 'e')
+    {
+        return (14);
+    }
+    else if (c == 'F' || c == 'f')
+    {
+        return (15);
+    }
+    else
+    {
+        print_str("Wrong number!\n");
+        exit(1);
+    }
+}
+
+int ft_htoi(char s[])
+{
+    int i;
+    int n;
+
+    i = 0;
+    n = 0;
+    if (s[i] != '0' && (s[i + 1] != 'x' || s[i + 1] != 'X'))
+    {
+        print_str("Error!\n");
+        exit(1);
+    }
+    i += 2;
+    while (s[i] != '\0')
+    {
+        n = hex(s[i]) + 16 * n;
+        i++;
+    }
+    return (n);
+}
+
+void ft_squeeze(char s[], int c)
+{
+    int i;
+    int j;
+
+    i = 0;
+    j = 0;
+    while (s[i] != '\0')
+    {
+        if (s[i] != c)
+        {
+            s[j++] = s[i];
+        }
+        i++;
+    }
+    s[j] = '\0';
+}
+
+void ft_strcat(char s[], char t[])
+{
+    int i;
+    int j;
+    int l;
+
+    j = 0;
+    i = strlength(s);
+    while ((s[i] = t[j]) != '\0')                                    /* while ((s[i++] = t[j++]) != '\0'); possible */
+    {
+        i++;
+        j++;
+    }
+}
+
+int find_char(char s[], char c)
+{
+    int i;
+
+    i = 0;
+    while (s[i] != '\0')
+    {
+        if (s[i] == c)
+            return (TRUE);
+        i++;
+    }
+    return (FALSE);
+}
+
+void ft_extended_squeeze(char s[], char t[])
+{
+    int i;
+    int j;
+
+    i = 0;
+    j = 0;
+    while (s[i] != '\0')
+    {
+        if (find_char(t, s[i]))
+            ft_squeeze(s, s[i]);
+        i++;
     }
 }
