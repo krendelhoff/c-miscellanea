@@ -3,99 +3,99 @@ int cache[100] = {0};
 
 void swap_int(int arr[], int b, int f)
 {
-	int temp;
+    int temp;
 
-	temp = arr[b];
-	arr[b] = arr[f];
-	arr[f] = temp;
+    temp = arr[b];
+    arr[b] = arr[f];
+    arr[f] = temp;
 }
 
 int strlength(char s[])
 {
-	int i;
+    int i;
 
-	i = 0;
-	while (s[i] != '\0')
-		i++;
-	return (i);
+    i = 0;
+    while (s[i] != '\0')
+        i++;
+    return (i);
 }
 
 void remove_term(char s[], int index)
 {
-	int i;
+    int i;
 
-	while(index < strlength(s))
-	{
-		s[index] = s[index + 1];
-		index++;
-	}
+    while(index < strlength(s))
+    {
+        s[index] = s[index + 1];
+        index++;
+    }
 }
 
 int find(char s[], char c)
 {
-	int i;
-	int state;
+    int i;
+    int state;
 
-	i = state = 0;
-	if (s[i] == '-')
-		{
-			i++;
-			state = -1;
-		}
-	while (s[i] != c && i < strlength(s))
-		i++;
-	return (i + state);
+    i = state = 0;
+    if (s[i] == '-')
+    {
+        i++;
+        state = -1;
+    }
+    while (s[i] != c && i < strlength(s))
+        i++;
+    return (i + state);
 }
 int str_to_int(char s[])
 {
-	int length;
-	int i;
-	int n;
-	int sign;
+    int length;
+    int i;
+    int n;
+    int sign;
 
-	n = i = 0;
-	sign = 1;
-	if (s[i] == '-')
-	{
-		sign = -1;
-		i++;
-	}
-	length = find(s, '.');
-	while (i < strlength(s))
-		{
-			n += (s[i] - '0')*power(10, --length);
-			i++;
-		}
-	return (sign*n);
+    n = i = 0;
+    sign = 1;
+    if (s[i] == '-')
+    {
+        sign = -1;
+        i++;
+    }
+    length = find(s, '.');
+    while (i < strlength(s))
+    {
+        n += (s[i] - '0')*power(10, --length);
+        i++;
+    }
+    return (sign*n);
 }
 
 double str_to_float(char s[])
 {
-	int length;
-	int i;
-	double n;
-	int sign;
+    int length;
+    int i;
+    double n;
+    int sign;
 
-	n = i = 0;
-	sign = 1;
-	if (s[i] == '-')
-	{
-		sign = -1;
-		i++;
-	}
-	length = find(s, '.');
-	while (s[i] != '.' && i < strlength(s))
-	{
-		n = n + (s[i] - '0')*power(10, --length);
-		i++;
-	}
-	length = i++;
-	while (i < strlength(s))
-	{
-		n += (s[i] - '0')*power(10, length - i);
-		i++;
-	}
-	return (n*sign);
+    n = i = 0;
+    sign = 1;
+    if (s[i] == '-')
+    {
+        sign = -1;
+        i++;
+    }
+    length = find(s, '.');
+    while (s[i] != '.' && i < strlength(s))
+    {
+        n = n + (s[i] - '0')*power(10, --length);
+        i++;
+    }
+    length = i++;
+    while (i < strlength(s))
+    {
+        n += (s[i] - '0')*power(10, length - i);
+        i++;
+    }
+    return (n*sign);
 }
 
 int binary_search(int arr[], int hi, int lo, int n)
@@ -170,181 +170,181 @@ int factorial(int n)
 
 int is_prime(int n)
 {
-	int divisor;
+    int divisor;
 
-	divisor = 2;
-	while (power(divisor, 2) <= n)
-	{
-		if (n % divisor == 0)
-			return (0);
-		divisor++;
-	}
-	return (1);
+    divisor = 2;
+    while (power(divisor, 2) <= n)
+    {
+        if (n % divisor == 0)
+            return (0);
+        divisor++;
+    }
+    return (1);
 }
 
 void print_prime_numbers(int n)
 {
-	int i;
+    int i;
 
-	i = 2;
-	while (n >= 0)
-	{
-		if (is_prime(i))
-		{
-			print_int(i);
-			ft_putchar(' ');
-			n--;
-		}
-		i++;
-	}
+    i = 2;
+    while (n >= 0)
+    {
+        if (is_prime(i))
+        {
+            print_int(i);
+            ft_putchar(' ');
+            n--;
+        }
+        i++;
+    }
 }
 
 void print_number_factors(int n)
 {
-	int divisor;
-	int original;
+    int divisor;
+    int original;
 
-	divisor = 2;
-	original = n;
-	while (n != 1)
-	{
-		while (n % divisor == 0)
-		{
-			n /= divisor;
-			print_int(divisor);
-			print_str(" ");
-		}
-		divisor++;
-	}
+    divisor = 2;
+    original = n;
+    while (n != 1)
+    {
+        while (n % divisor == 0)
+        {
+            n /= divisor;
+            print_int(divisor);
+            print_str(" ");
+        }
+        divisor++;
+    }
 }
 
 void sieve(int arr[], int n)
 {
-	int i;
-	int k;
+    int i;
+    int k;
 
-	i = 2;
-	while (i*i < n)
-	{
-		k = i*i;
-		if (arr[i] == 0)
-			while (k < n)
-			{
-				arr[k] = 1;
-				k += i;
-			}
-		i++;
-	}
-	print_arr(arr, 0, n);
+    i = 2;
+    while (i*i < n)
+    {
+        k = i*i;
+        if (arr[i] == 0)
+            while (k < n)
+            {
+                arr[k] = 1;
+                k += i;
+            }
+        i++;
+    }
+    print_arr(arr, 0, n);
 }
 
 void initialize_by_zero(int arr[], int length)
 {
-	int i;
+    int i;
 
-	i = 0;
-	while (i < length)
-		arr[i++] = 0;
+    i = 0;
+    while (i < length)
+        arr[i++] = 0;
 }
 
 void reverse_arr(int arr[], int first, int last)
 {
-	while (first <= (first + last)/2)
-	{
-		swap_int(arr, first, last);
-		first++;
-		last--;
-	}
+    while (first <= (first + last)/2)
+    {
+        swap_int(arr, first, last);
+        first++;
+        last--;
+    }
 }
 
 void swap_char(char s[], int b, int f)
 {
-	int temp;
+    int temp;
 
-	temp = s[b];
-	s[b] = s[f];
-	s[f] = temp;
+    temp = s[b];
+    s[b] = s[f];
+    s[f] = temp;
 }
 
 void reverse_str(char s[])
 {
-	int first;
-	int last;
+    int first;
+    int last;
 
-	first = 0;
-	last = strlength(s) - 1;
-	while (last > first)
-	{
-		swap_char(s, first, last);
-		first++;
-		last--;
-	}
+    first = 0;
+    last = strlength(s) - 1;
+    while (last > first)
+    {
+        swap_char(s, first, last);
+        first++;
+        last--;
+    }
 }
 
 void cyclic_shift_left_str(char s[])
 {
-	int temp;
-	int i;
+    int temp;
+    int i;
 
-	temp = s[0];
-	i = 0;
-	while (i < strlength(s) - 1)
-	{
-		s[i] = s[i + 1];
-		i++;
-	}
-	s[i] = temp;
+    temp = s[0];
+    i = 0;
+    while (i < strlength(s) - 1)
+    {
+        s[i] = s[i + 1];
+        i++;
+    }
+    s[i] = temp;
 }
 
 void cyclic_shift_right_str(char s[])
 {
-	int temp;
-	int i;
+    int temp;
+    int i;
 
-	temp = s[strlength(s) - 1];
-	i = strlength(s) - 1;
-	while (i > 0)
-	{
-		s[i] = s[i - 1];
-		i--;
-	}
-	s[0] = temp;
+    temp = s[strlength(s) - 1];
+    i = strlength(s) - 1;
+    while (i > 0)
+    {
+        s[i] = s[i - 1];
+        i--;
+    }
+    s[0] = temp;
 }
 
 int fibonacci(int n)
 {
-	if (n <= 1)
-		return (n);
-	if (cache[n] != 0)
-		return (cache[n]);
-	return (cache[n] = fibonacci(n - 1) + fibonacci(n - 2));
+    if (n <= 1)
+        return (n);
+    if (cache[n] != 0)
+        return (cache[n]);
+    return (cache[n] = fibonacci(n - 1) + fibonacci(n - 2));
 }
 
 void   remove_trailing_spaces(char s[])
 {
-	int i;
-	int k;
+    int i;
+    int k;
 
-	k = i = 0;
-	while (s[i] == ' ')
+    k = i = 0;
+    while (s[i] == ' ')
+    {
+        remove_term(s, i);
+    }
+    while (i < strlength(s))
+    {
+        if (s[i] == ' ')
+            k++;
+        else
+            k = 0;
+        if (k > 1)
         {
             remove_term(s, i);
+            k--;
+            print_str(s);
+            continue;
         }
-        while (i < strlength(s))
-        {
-            if (s[i] == ' ')
-                k++;
-            else
-                k = 0;
-            if (k > 1)
-            {
-                remove_term(s, i);
-                k--;
-                print_str(s);
-                continue;
-            }
-            i++;
-        }
+        i++;
+    }
 }
 
 int euclidus(int a, int b)
@@ -626,14 +626,109 @@ int find_char(char s[], char c)
 void ft_extended_squeeze(char s[], char t[])
 {
     int i;
-    int j;
 
     i = 0;
-    j = 0;
     while (s[i] != '\0')
     {
         if (find_char(t, s[i]))
             ft_squeeze(s, s[i]);
         i++;
     }
+}
+
+int any(char s[], char t[])
+{
+    int i;
+
+    i = 0;
+    while (s[i] != '\0')
+    {
+        if (find_char(t, s[i]))
+            return (i);
+        i++;
+    }
+    return (-1);
+}
+
+unsigned int getbits(unsigned x, int p, int n)
+{
+    return ((x >> (p - n + 1)) & ~(~0 << n));
+}
+
+unsigned int setbits(unsigned x, int p, int n, unsigned y)
+{
+    unsigned a;
+    unsigned b;
+
+    a = ~(~0 << n) & y;
+    a = a << (p - n + 1);
+    b = ~(~(~0 << n) << (p - n + 1));
+    x = x & b;
+    x = x | a;
+    return (x);
+}
+
+unsigned invert(unsigned x, int p, int n)
+{
+    unsigned a;
+    unsigned b;
+
+    a = ~(~0 << n) << (p - n + 1);
+    x = x ^ a;
+    return (x);
+}
+
+unsigned rigthrot(unsigned x, int n)
+{
+    int i;
+    unsigned a;
+    unsigned b;
+
+    i = 0;
+    while (i < n)
+    {
+        a = ~(~(unsigned)0 << 1) & x;
+        if (a == 1)
+        {
+            x = (x >> 1) | (~(~0 >> 1));
+        }
+        else
+        {
+            x = (x >> 1);
+        }
+        i++;
+    }
+    return (x);
+}
+
+int bitcount(unsigned x)
+{
+    int b;
+
+    b = 0;
+    while (x != 0)
+    {
+        if (x & 01)
+        {
+            b++;
+        }
+        x >>= 1;
+    }
+    return (b);
+}
+
+int fast_bitcount(unsigned x)
+{
+    int b;
+
+    b = 0;
+    if (x > 0)
+    {
+        while((x &= x - 1) != 0)
+        {
+            b++;
+        }
+        return (++b);
+    }
+    return (FALSE);
 }
