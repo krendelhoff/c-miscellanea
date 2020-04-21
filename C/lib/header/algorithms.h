@@ -45,4 +45,8 @@ unsigned     invert(unsigned x, int p, int n);
 unsigned     rigthrot(unsigned x, int n);
 int          fast_bitcount(unsigned x);
 int          bitcount(unsigned x);
+int          ft_bsearch(int *arr, int x, int low, int high);
+void         escape(char *s, char *t);
+void shellsort(int *arr, int n);
+void expand(char *s, char *t);
 #endif

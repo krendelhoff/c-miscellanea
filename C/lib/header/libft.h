@@ -4,18 +4,15 @@
 # define BUFFER_SIZE 1000
 # define TRUE 1
 # define FALSE 0
-# define N 45
+# define N 1000
 
 # include <unistd.h>
 # include <stdlib.h>
-# include "algorithms.h"
-# include "mymath.h"
-# include "myio.h"
-
-struct structure
-{
-	int n;
-	int m;
-};
+# include "math.h"
+# include "io.h"
+# include "scan.h"
+# include "print.h"
+# include "sort.h"
+# include "swap.h"
 
 #endif

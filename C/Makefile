@@ -4,6 +4,8 @@ FLAGS = -Werror -Wall -Wextra
 
 NAME = binary
 
+HEADER = ~/Projects/Algorithms/C/lib/header
+
 SRC = lib/mymath.c lib/myio.c lib/algorithms.c
 
 all: $(NAME)
@@ -23,9 +25,9 @@ uninstall:
 		rm -rf /usr/local/bin/executable
 
 mylib.a: $(SRC)
-		gcc -g -c $(SRC) -I lib
+		gcc -g -c $(SRC) -I $(HEADER)
 		ar rc mylib.a *.o
 		rm -rf *.o
 
 $(NAME): main.c mylib.a
-		gcc $(FLAGS) -o $(NAME) main.c mylib.a -I lib
+		gcc $(FLAGS) -o $(NAME) main.c mylib.a -I $(HEADER)
