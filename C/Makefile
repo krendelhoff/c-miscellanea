@@ -6,7 +6,16 @@ NAME = binary
 
 HEADER = ~/Projects/Algorithms/C/lib/header
 
-SRC = lib/mymath.c lib/myio.c lib/algorithms.c
+SRC = lib/bitwise.c \
+	  lib/convert.c \
+	  lib/io.c \
+	  lib/math.c \
+	  lib/print.c \
+	  lib/scan.c \
+	  lib/search.c \
+	  lib/sort.c \
+	  lib/string.c \
+	  lib/swap.c
 
 all: $(NAME)
 

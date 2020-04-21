@@ -101,7 +101,7 @@ void ft_strcat(char s[], char t[])
     int l;
 
     j = 0;
-    i = strlength(s);
+    i = ft_strlen(s);
     while ((s[i] = t[j]) != '\0')                                    /* while ((s[i++] = t[j++]) != '\0'); possible */
     {
         i++;
@@ -133,10 +133,10 @@ void reverse(char s[])
     int last;
 
     first = 0;
-    last = strlength(s) - 1;
+    last = ft_strlen(s) - 1;
     while (last > first)
     {
-        swap_char(s, first, last);
+        cswap(&s[first], &s[last]);
         first++;
         last--;
     }
@@ -149,7 +149,7 @@ void cyclic_shift_left_str(char s[])
 
     temp = s[0];
     i = 0;
-    while (i < strlength(s) - 1)
+    while (i < ft_strlen(s) - 1)
     {
         s[i] = s[i + 1];
         i++;
@@ -162,8 +162,8 @@ void cyclic_shift_right_str(char s[])
     int temp;
     int i;
 
-    temp = s[strlength(s) - 1];
-    i = strlength(s) - 1;
+    temp = s[ft_strlen(s) - 1];
+    i = ft_strlen(s) - 1;
     while (i > 0)
     {
         s[i] = s[i - 1];
@@ -182,7 +182,7 @@ void   remove_trailing_spaces(char s[])
     {
         remove_term(s, i);
     }
-    while (i < strlength(s))
+    while (i < ft_strlen(s))
     {
         if (s[i] == ' ')
             k++;
@@ -216,7 +216,7 @@ void remove_term(char s[], int index)
 {
     int i;
 
-    while(index < strlength(s))
+    while(index < ft_strlen(s))
     {
         s[index] = s[index + 1];
         index++;

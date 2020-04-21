@@ -15,7 +15,7 @@ int str_to_int(char s[])
         i++;
     }
     length = find(s, '.');
-    while (i < strlength(s))
+    while (i < ft_strlen(s))
     {
         n += (s[i] - '0')*power(10, --length);
         i++;
@@ -38,13 +38,13 @@ double str_to_float(char s[])
         i++;
     }
     length = find(s, '.');
-    while (s[i] != '.' && i < strlength(s))
+    while (s[i] != '.' && i < ft_strlen(s))
     {
         n = n + (s[i] - '0')*power(10, --length);
         i++;
     }
     length = i++;
-    while (i < strlength(s))
+    while (i < ft_strlen(s))
     {
         n += (s[i] - '0')*power(10, length - i);
         i++;

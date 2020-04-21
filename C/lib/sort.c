@@ -17,7 +17,7 @@ void selection_sort(int arr[], int first, int last)
                 min_index = i;
             i++;
         }
-        swap_int(arr, current, min_index);
+        iswap(&arr[current], &arr[min_index]);
         current++;
     }
 }
@@ -33,7 +33,7 @@ void insertion_sort(int arr[], int first, int last)
         i = current;
         while (i > 0 && arr[i - 1] > arr[i])
         {
-            swap_int(arr, i - 1, i);
+            iswap(&arr[i - 1], &arr[i]);
             i--;
         }
         current++;
@@ -154,7 +154,7 @@ void shellsort(int *arr, int n)
             j = i;
             while (j >= gap && arr[j - gap] > arr[j])
             {
-                swap_int(arr, i - gap, i);
+                iswap(&arr[i - gap], &arr[i]);
                 j -= gap;
             }
             i++;

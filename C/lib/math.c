@@ -113,7 +113,7 @@ int fast_euclidus(int a, int b)
     int tmp;
 
     if (b > a)
-        swap(&a, &b);
+        iswap(&a, &b);
     while (b != 0)
     {
         tmp = b;

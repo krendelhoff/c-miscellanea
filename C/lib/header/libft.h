@@ -14,5 +14,9 @@
 # include "print.h"
 # include "sort.h"
 # include "swap.h"
+# include "bitwise.h"
+# include "convert.h"
+# include "string.h"
+# include "search.h"
 
 #endif

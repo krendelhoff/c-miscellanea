@@ -1,5 +1,21 @@
 #include "libft.h"
 
+int find(char s[], char c)
+{
+    int i;
+    int state;
+
+    i = state = 0;
+    if (s[i] == '-')
+    {
+        i++;
+        state = -1;
+    }
+    while (s[i] != c && i < ft_strlen(s))
+        i++;
+    return (i + state);
+}
+
 int find_char(char s[], char c)
 {
     int i;
