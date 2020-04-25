@@ -61,3 +61,53 @@ int ft_bsearch(int *arr, int x, int low, int high)
         return (low);
     return (-1);
 }
+
+int strindex(char s[], char t[])
+{
+    int i;
+    int j;
+    int k;
+
+    i = 0;
+    while (s[i] != '\0')
+    {
+        j = 0;
+        k = i;
+        while (t[j] != '\0' && s[k] == t[j])
+        {
+            k++;
+            j++;
+        }
+        if (j > 0 && t[j] == '\0')
+            return (i);
+        i++;
+    }
+    return (-1);
+}
+
+int strindex1(char s[], char t[])
+{
+    int i;
+    int j;
+    int k;
+    int ix;
+
+    i = 0;
+    ix = 0;
+    while (s[i] != '\0')
+    {
+        j = 0;
+        k = i;
+        while (t[j] != '\0' && s[k] == t[j])
+        {
+            k++;
+            j++;
+        }
+        if (j > 0 && t[j] == '\0')
+            ix = i;
+        i++;
+    }
+    if (ix != 0)
+        return (ix);
+    return (-1);
+}

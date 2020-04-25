@@ -5,6 +5,7 @@
 # define TRUE 1
 # define FALSE 0
 # define N 1000
+# define EOF 0
 
 # include <unistd.h>
 # include <stdlib.h>

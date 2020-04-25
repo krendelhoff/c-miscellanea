@@ -222,3 +222,18 @@ void remove_term(char s[], int index)
         index++;
     }
 }
+
+void cprepend(char s[], char c)
+{
+    int i;
+    int l;
+
+    l = ft_strlen(s);
+    i = 0;
+    while (l >= 0)
+    {
+        s[l + 1] = s[l];
+        l--;
+    }
+    s[0] = c;
+}

@@ -1,14 +1,15 @@
 #include "libft.h"
+#include <limits.h>
 
 int main(void)
 {
     char s[N];
-    char t[N];
+    int n;
 
-    scan_line(s, N - 1);
-    expand(s, t);
-    ft_squeeze(t, '\\');
-    print_str(t);
+    while ((n = scan_line(s, N)) != 0)
+    {
+        print_str(s);
+    }
     ft_putchar('\n');
     return (0);
 }

@@ -128,3 +128,152 @@ int ft_htoi(char s[])
     }
     return (n);
 }
+
+void ft_itoa(int n, char s[])
+{
+    int i;
+    int sign;
+
+    if (n < 0)
+        sign = -1;
+    i = 0;
+    while (TRUE)
+    {
+        if (sign < 0)
+        {
+            s[i++] =(-1) * (n % 10) + '0';
+        }
+        else
+            s[i++] = n % 10 + '0';
+        if ((n /= 10) == 0)
+            break;
+    }
+    if (sign < 0)
+        s[i++] = '-';
+    s[i] = '\0';
+    reverse(s);
+}
+
+char chex(int n)
+{
+    if (n >= 10 && n <= 15)
+        return ('A' + (n - 10));
+    else
+        return (n + '0');
+}
+
+void itob(int n, char s[], int base)
+{
+    int i;
+    int sign;
+
+    if (base < 2 || base > 16)
+    {
+        print_str("Wrong base.\n");
+    }
+    else
+    {
+        if (n < 0)
+            sign = -1;
+        i = 0;
+        while (TRUE)
+        {
+            if (sign < 0)
+            {
+                if (base > 10)
+                {
+                    s[i++] = chex((-1) * (n % base));
+                }
+                else
+                    s[i++] =(-1) * (n % base) + '0';
+            }
+            else if (base > 10)
+                s[i++] = chex(n % base);
+            else
+                s[i++] = n % base + '0';
+            if ((n /= base) == 0)
+                break;
+        }
+        if (base == 16)
+        {
+            s[i++] = 'x';
+            s[i++] = '0';
+        }
+        else if (base == 8)
+            s[i++] = '0';
+        if (sign < 0)
+            s[i++] = '-';
+        s[i] = '\0';
+        reverse(s);
+    }
+}
+
+void ft_itoa_extended(int n, char s[], int b)
+{
+    char t[N];
+    int i;
+
+    ft_itoa(n, s);
+    if (ft_strlen(s) < b)
+    {
+        i = b - ft_strlen(s);
+        while (i >= 0)
+        {
+            cprepend(s, ' ');
+            i--;
+        }
+    }
+}
+
+double ft_atof(char s[])
+{
+    double val;
+    int pow;
+    int i;
+    int sign;
+
+    i = 0;
+    sign = 1;
+    val = 0;
+    pow = 1;
+    while (s[i] == ' ')
+        i++;
+    if (s[i] == '-' || s[i] == '+')
+    {
+        i++;
+        if (s[i] == '-')
+            sign = -1;
+    }
+    while (s[i] >= '0' && s[i] <= '9')
+    {
+        val = 10.0 * val + (s[i] - '0');
+        i++;
+    }
+    if (s[i] == '.')
+        i++;
+    while (s[i] >= '0' && s[i] <= '9')
+    {
+        val = 10.0 * val + (s[i] - '0');
+        pow *= 10;
+        i++;
+    }
+    if (s[i] == 'e')
+    {
+        i++;
+        if (s[i] == '-')
+        {
+            i++;
+            if (s[i] >= '0' && s[i] <= '9')
+                return (sign * (val / pow) * power(10, (-1) * (s[i] - '0')));
+        }
+        else if (s[i] >= '0' && s[i] <= '9')
+            return (sign * val * rpower(10, s[i] - '0') / pow);
+        else if (s[i] == '+')
+        {
+            i++;
+            if (s[i] >= '0' && s[i] <= '9')
+                return (sign * val * rpower(10, s[i] - '0') / pow);
+        }
+    }
+    return (sign * val / pow);
+}

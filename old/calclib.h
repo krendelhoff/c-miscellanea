@@ -228,8 +228,10 @@ int getop_v2(char s[])
     i++;
     s[i] = '\0';
     if (c != EOF)
+    {
         ungetchchar = c;
         buf[bufp++] = ungetchchar;
+    }
     return NUMBER;
 }
 #endif
