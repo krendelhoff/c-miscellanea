@@ -1,6 +1,7 @@
 #include "libft.h"
+#include <stdio.h>
 
-int ft_strlen(char s[])
+int ft_strlen2(char s[])
 {
     int i;
 
@@ -94,7 +95,7 @@ void escape(char *s, char *t)
     t[j] = '\0';
 }
 
-void ft_strcat(char s[], char t[])
+void ft_strcat2(char s[], char t[])
 {
     int i;
     int j;
@@ -247,4 +248,132 @@ void rreverse(char *s, int pos)
         return;
     rreverse(s, pos + 1);
     cswap(&s[pos], &s[length - pos - 1]);
+}
+
+void ft_strcpy4(char *s, char *t)
+{
+    int i;
+
+    i = 0;
+    while ((s[i] = t[i]) != '\0')
+        i++;
+}
+
+void ft_strcpy2(char *s, char *t)    // пример как можно увеличивать указатели
+{
+    while ((*s = *t) != '\0')
+    {
+        s++;
+        t++;
+    }
+}
+
+void ft_strcpy3(char *s, char *t)
+{
+    while ((*s++ = *t++) != '\0')
+        ;
+}
+
+void ft_strcpy(char *s, char *t)
+{
+    while ((*s++ = *t++))
+        ;
+}
+
+int ft_strlen(char *s)
+{
+    char *p = s;
+
+    while (*p != '\0')
+        p++;
+    return (p - s);
+}
+
+int ft_strcmp2(char *s, char *t)
+{
+    int i;
+
+    i = 0;
+    while (s[i] == t[i])
+    {
+        if (s[i] == '\0')
+            return (0);
+        i++;
+    }
+    return (s[i] - t[i]);
+}
+
+int ft_strcmp(char *s, char *t)
+{
+    while (*s == *t)
+    {
+        if (*s == '\0')
+            return (0);
+        s++;
+        t++;
+    }
+    return (*s - *t);
+}
+
+void ft_strcat(char *s, char *t)
+{
+    while (*s)          /* здесь тоже */
+        s++;
+    while ((*s++ = *t++))
+        ;
+}
+
+int strend(char *s, char *t)
+{
+    char *p;
+    int   length;
+    int i;
+
+    p = t;
+    while (*p)          /* позже пойми почему while (*p++) ; двигается на один */
+        p++;            /*  больше чем надо */
+    length = p - t;
+    i = 0;
+    while (i++ < length - 1)
+        s++;
+    return (!ft_strcmp(s, t));
+}
+
+void ft_strncpy(char *s, char *t, int n)
+{
+    while ((*s++ = *t++) && (--n > 0))
+        ;
+    *s = '\0';
+}
+
+int ft_strncmp(char *s, char *t, int n)
+{
+    while (*s == *t && --n > 0)
+    {
+        if (*s == '\0')
+            return (0);
+        s++;
+        t++;
+    }
+    return (*s - *t);
+}
+
+void ft_strncat(char *s, char *t, int n)
+{
+    while (*s)
+        s++;
+    while ((*s++ = *t++) && --n > 0)
+        ;
+}
+
+void preverse(char *s)
+{
+    char *p;
+
+    p = s;
+    while (*p)
+        p++;
+    p--;
+    while (p - s > 0)   /* так же равноценно можно отправлять вместо */
+        cswap(p--, s++); /* cswap(&s[i], &s[j]) вот так cswap(s + i, s + j); */
 }

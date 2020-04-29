@@ -15,7 +15,8 @@ SRC = lib/bitwise.c \
 	  lib/search.c \
 	  lib/sort.c \
 	  lib/string.c \
-	  lib/swap.c
+	  lib/swap.c \
+	  lib/year.c
 
 all: $(NAME)
 
@@ -23,7 +24,7 @@ clean:
 		rm -rf *.o
 
 fclean: clean
-		rm -rf binary mylib.a
+		rm -rf $(NAME) lib.a
 
 re: fclean all
 
@@ -38,5 +39,5 @@ lib.a: $(SRC)
 		ar rc lib.a *.o
 		rm -rf *.o
 
-$(NAME): main.c mylib.a
-		gcc $(FLAGS) -o $(NAME) main.c mylib.a -I $(HEADER)
+$(NAME): main.c lib.a
+		gcc $(FLAGS) -o $(NAME) main.c lib.a -I $(HEADER)
