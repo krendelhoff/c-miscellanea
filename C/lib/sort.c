@@ -127,15 +127,15 @@ int partition(int *arr, int left, int right)
     return (i + 1);
 }
 
-void ft_qsort(int *arr, int left, int right)
+void quicksort(int *arr, int left, int right)
 {
     int pivot;
 
     if (left < right)
     {
         pivot = partition(arr, left, right);
-        ft_qsort(arr, left, pivot - 1);
-        ft_qsort(arr, pivot + 1, right);
+        quicksort(arr, left, pivot - 1);
+        quicksort(arr, pivot + 1, right);
     }
 }
 
@@ -161,4 +161,25 @@ void shellsort(int *arr, int n)
         }
         gap /= 2;
     }
+}
+
+void ft_qsort(int arr[], int left, int right)
+{
+    int i;
+    int last;
+
+    if (left >= right)
+        return;
+    iswap(&arr[left], &arr[(left + right) / 2]);
+    last = left;
+    i = left + 1;
+    while (i <= right)
+    {
+        if (arr[i] < arr[left])
+            iswap(&arr[++last], &arr[i]);
+        i++;
+    }
+    iswap(&arr[left], &arr[last]);
+    ft_qsort(arr, left, last - 1);
+    ft_qsort(arr, last + 1, right);
 }

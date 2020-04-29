@@ -277,3 +277,19 @@ double ft_atof(char s[])
     }
     return (sign * val / pow);
 }
+
+void ritoa(int n, char *s)
+{
+    static int i;
+
+    if (n < 0)
+    {
+        s[i++] = '-';
+        n = -n;
+    }
+    if (n / 10)
+        ritoa(n / 10, s);
+    s[i++] = n % 10 + '0';
+    s[i] = '\0';
+}
+

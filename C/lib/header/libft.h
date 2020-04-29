@@ -1,11 +1,11 @@
 #ifndef MYLIB_H
 
 # define MYLIB_H
-# define BUFFER_SIZE 1000
+# define BUFSIZE 1000
 # define TRUE 1
 # define FALSE 0
 # define N 1000
-# define EOF 0
+# define EOF -1
 
 # include <unistd.h>
 # include <stdlib.h>

@@ -82,3 +82,15 @@ void print_float(double n, int signs)
         while (i++ < signs)
             print_int(0);
 }
+
+void printd(int n)
+{
+    if (n < 0)
+    {
+        n = -n;
+        ft_putchar('-');
+    }
+    if (n / 10)
+        printd(n / 10);
+    ft_putchar(n % 10 + '0');
+}

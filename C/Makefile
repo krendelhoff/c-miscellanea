@@ -28,14 +28,14 @@ fclean: clean
 re: fclean all
 
 install:
-		install ./executable /usr/local/bin
+		install ./$(NAME) /usr/local/bin
 
 uninstall:
-		rm -rf /usr/local/bin/executable
+		rm -rf /usr/local/bin/$(NAME)
 
-mylib.a: $(SRC)
+lib.a: $(SRC)
 		gcc -g -c $(SRC) -I $(HEADER)
-		ar rc mylib.a *.o
+		ar rc lib.a *.o
 		rm -rf *.o
 
 $(NAME): main.c mylib.a

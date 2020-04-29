@@ -237,3 +237,14 @@ void cprepend(char s[], char c)
     }
     s[0] = c;
 }
+
+void rreverse(char *s, int pos)
+{
+    static int length;
+
+    length = ft_strlen(s);
+    if (pos >= length / 2)
+        return;
+    rreverse(s, pos + 1);
+    cswap(&s[pos], &s[length - pos - 1]);
+}

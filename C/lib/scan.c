@@ -70,3 +70,107 @@ int scan_arr(int arr[])
     }
     return (i);
 }
+
+char buf[BUFSIZE];
+int  bufp;
+
+char getch(void)
+{
+    if (bufp > 0)
+        return (buf[--bufp]);
+    return (ft_getchar());
+}
+
+void ungetch(char c)
+{
+    if (bufp >= BUFSIZE)
+        print_str("Too many characters. Failed to ungetch.\n");
+    else
+        buf[bufp++] = c;
+}
+
+int getint(int *pn)
+{
+    int c;
+    int sign;
+
+    while ((c = getch()) == ' ')
+        ;
+    if (!(c >= '0' && c <= '9') && c != EOF && c != '+' && c != '-')
+    {
+        //ungetch(c);                   имеет право на существование, tho.
+        return (0);
+    }
+    if (c == '-')
+        sign = -1;
+    else
+        sign = 1;
+    if (c == '+' || c == '-')
+        c = getch();
+    if (c >= '0' && c <= '9')
+    {
+        *pn = 0;
+        while (c >= '0' && c <= '9')
+        {
+            *pn = 10 * *pn + (c - '0');
+            c = getch();
+        }
+        *pn *= sign;
+        if (c != EOF)
+            ungetch(c);
+        return (c);
+    }
+    else
+    {
+        ungetch(c);
+        return (0);
+    }
+}
+
+int getfloat(double *pn)
+{
+    int c;
+    int sign;
+    int power;
+
+    while ((c = getch()) == ' ')
+        ;
+    if (!(c >= '0' && c <= '9') && c != EOF && c != '+' && c != '-')
+    {
+        //ungetch(c);
+        return (0);
+    }
+    if (c == '-')
+        sign = -1;
+    else
+        sign = 1;
+    if (c == '+' || c == '-')
+        c = getch();
+    if (c >= '0' && c <= '9')
+    {
+        *pn = 0;
+        while (c >= '0' && c <= '9')
+        {
+            *pn = 10.0 * *pn + (c - '0');
+            c = getch();
+        }
+        if (c == '.')
+            c = getch();
+        power = 1;
+        while (c >= '0' && c <= '9')
+        {
+            *pn = 10.0 * *pn + (c - '0');
+            c = getch();
+            power *= 10;
+        }
+        *pn = sign * *pn / (double)power;
+        if (c != EOF)
+            ungetch(c);
+        return (c);
+    }
+    else
+    {
+        ungetch(c);
+        return (0);
+    }
+}

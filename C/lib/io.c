@@ -1,7 +1,7 @@
 #include "libft.h"
 
 char g_buf;
-char g_buffer[BUFFER_SIZE];
+char g_buffer[BUFSIZE];
 int  g_i = -1;
 
 void ft_putchar(char c)
