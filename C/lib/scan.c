@@ -6,7 +6,7 @@ int scan_line(char s[], int lim)
     char c;
 
     i = 0;
-    while (i < lim - 1 && (c = getbufchar()) != '\n' && c != EOF)
+    while (i < lim - 1 && (c = getbufchar()) != EOF && c != '\n')
     {
         s[i] = c;
         i++;
@@ -16,8 +16,6 @@ int scan_line(char s[], int lim)
         s[i] = '\n';
         i++;
     }
-    else if (c != EOF)
-        putinbuf(c);
     s[i] = '\0';
     return (i);
 }

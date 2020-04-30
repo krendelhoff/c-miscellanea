@@ -240,9 +240,9 @@ double ft_atof(char s[])
         i++;
     if (s[i] == '-' || s[i] == '+')
     {
-        i++;
         if (s[i] == '-')
             sign = -1;
+        i++;
     }
     while (s[i] >= '0' && s[i] <= '9')
     {
