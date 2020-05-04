@@ -61,11 +61,7 @@ int ft_atoi(char s[])
     n = 0;
     while (s[i] >= '0' && s[i] <= '9')
     {
-        ft_putchar(s[i]);
-        ft_putchar(' ');
         n = 10 * n + (s[i] - '0');
-        print_int(n);
-        ft_putchar('\n');
         i++;
     }
     return (n);

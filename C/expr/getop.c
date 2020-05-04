@@ -21,11 +21,13 @@ void ungetch(char c)
 
 void ungets(char *s)
 {
-    int i;
+    char *t;
 
-    i = ft_strlen(s);
-    while (i >= 0)
-        ungetch(s[i--]);
+    t = s;
+    while (*t)
+        t++;
+    while (t >= s)
+        ungetch(*t--);
 }
 
 int getop(char *s)

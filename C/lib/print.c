@@ -94,3 +94,8 @@ void printd(int n)
         printd(n / 10);
     ft_putchar(n % 10 + '0');
 }
+
+void ln(void)
+{
+    ft_putchar('\n');
+}
