@@ -1,0 +1,118 @@
+#include <stdio.h>
+#define MAXLINES 5000
+#define BUFFERSIZE 1000000
+#define MAXLINE 1000
+char *strcpy(char *destptr, const char *srcptr);
+int  ft_strcmp(const char *str1, const char *str2);
+
+char *lineptr[MAXLINES];
+
+int readlines(char *lineptr[], int nlines, char buffer[]);
+void writelines(char *lineptr[], int nlines);
+
+void ft_qsort(char *lineptr[], int left, int right, int (*comp)(const char *op1, const char *op2));
+
+int main(void)
+{
+    char buffer[BUFFERSIZE];
+    int nlines;
+
+    if ((nlines = readlines(lineptr, MAXLINES, buffer)) >= 0)
+    {
+        ft_qsort(lineptr, 0, nlines - 1, (int (*)(char*, char*))ft_strcmp);
+        writelines(lineptr, nlines);
+        return (0);
+    }
+    else
+    {
+        printf("Error: input too big to sort.\n");
+        return (1);
+    }
+}
+
+
+int ft_getline(char *s, int lim)
+{
+    int i;
+    char c;
+
+    i = 0;
+    while (i < lim - 1 && (c = getchar()) != EOF && c != '\n')
+        s[i++] = c;
+    if (c == '\n')
+        s[i++] = '\n';
+    s[i] = '\0';
+    return (i);
+}
+
+int readlines(char *lineptr[], int maxlines, char *buffer)
+{
+    int len, nlines;
+    char line[MAXLINE];
+    char *p;
+
+    nlines = 0;
+    p = buffer;
+    while ((len = ft_getline(line, MAXLINE)) > 0)
+    {
+        if (nlines >= maxlines || (buffer + BUFFERSIZE - p) < len + 1)
+            return (-1);
+        else
+        {
+            strcpy(p, line);
+            lineptr[nlines++] = p;
+            p += len + 1;
+        }
+    }
+    return (nlines);
+}
+
+void writelines(char *lineptr[], int nlines)
+{
+    while (nlines-- > 0)
+    {
+        printf("%s", *lineptr++);
+    }
+}
+
+void swap(char *v[], int i, int j)
+{
+    char *tmp;
+
+    tmp = v[i];
+    v[i] = v[j];
+    v[j] = tmp;
+}
+
+int ft_strcmp(const char *s, const char *t)
+{
+    while (*s == *t)
+    {
+        if (*s == '\0')
+            return (0);
+        s++;
+        t++;
+    }
+    return (*s - *t);
+}
+
+void ft_qsort(char *v[], int left, int right, int (*comp)(const char *op1, const char *op2))
+{
+    int i;
+    int last;
+
+    if (left >= right)
+        return;
+    swap(v, left, (left + right) / 2);
+    last = left;
+    i = left + 1;
+    while (i <= right)
+    {
+        if ((*comp)(v[i], v[left]) < 0)
+            swap(v, ++last, i);
+        i++;
+    }
+    swap(v, left, last);
+    ft_qsort(v, left, last - 1, comp);
+    ft_qsort(v, last + 1, right, comp);
+}

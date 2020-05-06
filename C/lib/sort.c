@@ -163,23 +163,4 @@ void shellsort(int *arr, int n)
     }
 }
 
-void ft_qsort(int arr[], int left, int right)
-{
-    int i;
-    int last;
 
-    if (left >= right)
-        return;
-    iswap(&arr[left], &arr[(left + right) / 2]);
-    last = left;
-    i = left + 1;
-    while (i <= right)
-    {
-        if (arr[i] < arr[left])
-            iswap(&arr[++last], &arr[i]);
-        i++;
-    }
-    iswap(&arr[left], &arr[last]);
-    ft_qsort(arr, left, last - 1);
-    ft_qsort(arr, last + 1, right);
-}

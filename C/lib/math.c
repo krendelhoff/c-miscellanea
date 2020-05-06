@@ -123,6 +123,13 @@ int fast_euclidus(int a, int b)
     return (a);
 }
 
+int gcd(int a, int b)
+{
+    if (a == 0)
+        return (b);
+    gcd(b % a, a);
+}
+
 int gcd_expanded(int a, int b, int *x, int *y)
 {
     int x1;
@@ -149,3 +156,20 @@ int fibonacci(int n)
         return (cache[n]);
     return (cache[n] = fibonacci(n - 1) + fibonacci(n - 2));
 }
+
+int ring(int n)
+{
+    int i;
+    int reversible;
+
+    i = 1;
+    reversible = 0;
+    while (i < n)
+    {
+        if (fast_euclidus(i, n) == 1)
+            reversible++;
+        i++;
+    }
+    return (reversible);
+}
+
